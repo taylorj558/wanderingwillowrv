@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.wanderingwillowrv.com/sitemap.xml
