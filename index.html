@@ -227,9 +227,11 @@
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="stories.html">Stories</a></li>
-          <li><a href="gear.html">Our Gear</a></li>
-          <li><a href="about.html">About Us</a></li>
+<li><a href="index.html">Home</a></li>
+    <li><a href="stories.html">Stories</a></li>
+    <li><a href="checklist.html">RV Packing Checklist</a></li>
+    <li><a href="gear.html">Our Gear</a></li>
+    <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -250,5 +252,19 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+  <script>
+  // Mobile Menu Toggle Logic
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (toggleBtn && navLinks) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        navLinks.classList.toggle('show');
+      });
+    }
+  });
+</script>
 </body>
 </html>
