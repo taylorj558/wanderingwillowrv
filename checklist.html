@@ -17,6 +17,7 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; display: flex; flex-direction: column; min-height: 100vh; }
+    main { flex: 1; display: flex; flex-direction: column; }
 
     /* Site Header - Original W Logo Design */
     .site-header { background: #F4F6F4; padding: 15px 20px; border-bottom: 1px solid var(--border); }
@@ -27,7 +28,7 @@
     
     .menu-toggle { display: none; background: none; border: none; color: var(--primary); font-size: 1.8rem; cursor: pointer; padding: 5px 10px; }
     
-    .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
+    .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; margin: 0; padding: 0; }
     .nav-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 8px 18px; border-radius: 20px; transition: all 0.2s ease; }
     .nav-links a.active, .nav-links a:hover { background: var(--primary); color: white; }
 
@@ -96,17 +97,26 @@
     .badge-approved { background: #E8F4EC; color: var(--willow-green); font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; border: 1px solid #B8E0C4; white-space: nowrap; }
     .btn-delete { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; }
     .btn-delete:hover { color: #AA3333; background: #FFF0F0; }
-
-    /* Footer */
-    .site-footer { background: var(--primary); color: #E2E0D8; padding: 40px 20px; margin-top: auto; border-top: 4px solid var(--secondary); }
-    .footer-container { max-width: 1000px; margin: 0 auto; display: flex; gap: 30px; }
-    .footer-col h3 { color: white; margin-bottom: 15px; font-size: 1.1rem; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 10px; }
-    .footer-col ul a { color: #E2E0D8; text-decoration: none; transition: color 0.2s; }
-    .footer-col ul a:hover { color: var(--secondary); }
-    
     .hidden { display: none !important; }
+
+    /* Site Footer Design */
+    .site-footer { background: var(--primary); color: #E2E0D8; padding: 40px 20px 20px; margin-top: 40px; border-top: 4px solid var(--secondary); font-size: 0.95rem; }
+    .site-footer .wrap { max-width: 1000px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
+    .footer-brand { font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 12px; font-family: Georgia, serif; }
+    .site-footer p { color: #A8B8B0; line-height: 1.5; margin-bottom: 15px; }
+    .site-footer h4 { color: white; margin-bottom: 15px; font-size: 1.1rem; }
+    .site-footer ul { list-style: none; padding: 0; margin: 0; }
+    .site-footer ul li { margin-bottom: 10px; }
+    .site-footer ul a { color: #E2E0D8; text-decoration: none; transition: color 0.2s; }
+    .site-footer ul a:hover { color: var(--secondary); }
+    
+    .socials { display: flex; gap: 15px; margin-top: 15px; }
+    .socials a { color: #A8B8B0; display: inline-block; width: 24px; height: 24px; transition: color 0.2s; }
+    .socials a:hover { color: var(--secondary); }
+    .socials svg { fill: currentColor; width: 100%; height: 100%; }
+    
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: #A8B8B0; }
   </style>
 </head>
 <body>
@@ -130,104 +140,120 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-container">
-      <div class="hero-text">
-        <span class="hero-tag">WANDERING WILLOW RV DEDICATED TOOL</span>
-        <h1>Family & Pup RV Checklist</h1>
-        <p>"Part-Time Wanderers. Full-Time Family."</p>
-      </div>
-      <div class="hero-progress">
-        <div class="hp-header">
-          <span>TRIP READY PROGRESS</span>
-          <span class="hp-percent" id="heroPercent">0%</span>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-text">
+          <span class="hero-tag">WANDERING WILLOW RV DEDICATED TOOL</span>
+          <h1>Family & Pup RV Checklist</h1>
+          <p>"Part-Time Wanderers. Full-Time Family."</p>
         </div>
-        <div class="hp-track"><div class="hp-fill" id="heroFill"></div></div>
-        <div class="hp-text" id="heroText">0 of 0 packed <strong>Packing in Progress</strong></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main App -->
-  <div class="container">
-    
-    <!-- Toolbar -->
-    <div class="toolbar">
-      <div class="filter-group">
-        <button class="filter-btn active" data-filter="all">All Items (<span id="countAll">0</span>)</button>
-        <button class="filter-btn" data-filter="topack">To Pack (<span id="countToPack">0</span>)</button>
-        <button class="filter-btn" data-filter="packed">Packed (<span id="countPacked">0</span>)</button>
-      </div>
-      <div class="action-group">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search item...">
-        <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
-        <button class="btn btn-outline orange" onclick="resetList()">🔄 Reset</button>
-      </div>
-    </div>
-
-    <!-- Add Item Bar -->
-    <div class="add-bar">
-      <strong>⊕ Add Custom Item:</strong>
-      <input type="text" id="newItemName" placeholder="e.g., Toddler sound machine...">
-      <select id="newItemCat">
-        <option value="RV Essentials & Travel Prep">RV Essentials & Travel Prep</option>
-        <option value="Camp Kitchen & Outdoor Living">Camp Kitchen & Outdoor Living</option>
-        <option value="Kids & Pups">Kids & Pups</option>
-      </select>
-      <button class="btn btn-primary" onclick="addItem()">Add</button>
-    </div>
-
-    <!-- Categories Container -->
-    <div id="checklistContainer"></div>
-
-  </div>
-
-  <!-- Footer -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">Wandering Willow RV</div>
-        <p>Part-time wanderers. Full-time family. Real advice from a family that camps with a toddler, dogs, and a fully packed truck.</p>
-        <div class="socials">
-          <!-- Replace # with your profile links -->
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3Z"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.8V9.4a6.3 6.3 0 1 0 5.4 6.3V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2Z"/></svg></a>
+        <div class="hero-progress">
+          <div class="hp-header">
+            <span>TRIP READY PROGRESS</span>
+            <span class="hp-percent" id="heroPercent">0%</span>
+          </div>
+          <div class="hp-track"><div class="hp-fill" id="heroFill"></div></div>
+          <div class="hp-text" id="heroText">0 of 0 packed <strong>Packing in Progress</strong></div>
         </div>
       </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="stories.html">Stories</a></li>
-          <li><a href="checklist.html">Packing Checklist</a></li>
-          <li><a href="gear.html">Our Gear</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+    </section>
+
+    <!-- Main App -->
+    <div class="container">
+      
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All Items (<span id="countAll">0</span>)</button>
+          <button class="filter-btn" data-filter="topack">To Pack (<span id="countToPack">0</span>)</button>
+          <button class="filter-btn" data-filter="packed">Packed (<span id="countPacked">0</span>)</button>
+        </div>
+        <div class="action-group">
+          <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search item...">
+          <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
+          <button class="btn btn-outline orange" onclick="resetList()">🔄 Reset</button>
+        </div>
       </div>
-      <div>
-        <h4>The fine print</h4>
-        <ul>
-          <li><a href="disclosure.html">Affiliate disclosure</a></li>
-          <li><a href="privacy.html">Privacy policy</a></li>
-        </ul>
-        <p style="margin-top:14px;font-size:.85rem">As an Amazon Associate we earn from qualifying purchases.</p>
+
+      <!-- Add Item Bar -->
+      <div class="add-bar">
+        <strong>⊕ Add Custom Item:</strong>
+        <input type="text" id="newItemName" placeholder="e.g., Toddler sound machine...">
+        <select id="newItemCat">
+          <option value="RV Essentials & Travel Prep">RV Essentials & Travel Prep</option>
+          <option value="Camp Kitchen & Outdoor Living">Camp Kitchen & Outdoor Living</option>
+          <option value="Kids & Pups">Kids & Pups</option>
+        </select>
+        <button class="btn btn-primary" onclick="addItem()">Add</button>
+      </div>
+
+      <!-- Categories Container -->
+      <div id="checklistContainer"></div>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER (same on every page) ============ -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Wandering Willow RV</div>
+          <p>Part-time wanderers. Full-time family. Real advice from a family that camps with a toddler, dogs, and a fully packed truck.</p>
+          <div class="socials">
+            <!-- Replace # with your profile links -->
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3Z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.8V9.4a6.3 6.3 0 1 0 5.4 6.3V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2Z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stories.html">Stories</a></li>
+            <li><a href="checklist.html">RV Packing Checklist</a></li>
+            <li><a href="gear.html">Our Gear</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>The fine print</h4>
+          <ul>
+            <li><a href="disclosure.html">Affiliate disclosure</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+          <p style="margin-top:14px;font-size:.85rem">As an Amazon Associate we earn from qualifying purchases.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Wandering Willow RV</span>
+        <span>Made in Alabama 🐾</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Wandering Willow RV</span>
-      <span>Made in Alabama 🐾</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="assets/js/main.js"></script>
-
+  <script src="assets/js/main.js"></script>
+  
   <!-- App Logic -->
   <script>
+    // --- Mobile Menu Toggle Logic ---
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleBtn = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      if (toggleBtn && navLinks) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navLinks.classList.toggle('show');
+        });
+      }
+    });
+
     // --- 36 Default Items ---
     const defaultItems = [
       // RV Essentials (12)
@@ -277,19 +303,6 @@
     let items = JSON.parse(localStorage.getItem('wwrv_items')) || [...defaultItems];
     let currentFilter = 'all';
     let searchQuery = '';
-
-    // Robust Mobile Menu Toggle
-    document.addEventListener("DOMContentLoaded", function() {
-      const toggleBtn = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
-      
-      if (toggleBtn && navLinks) {
-        toggleBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          navLinks.classList.toggle('show');
-        });
-      }
-    });
 
     // Toolbar Listeners
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -352,7 +365,6 @@
 
     // --- Render Engine ---
     function renderApp() {
-      // 1. Update Global Counts
       const total = items.length;
       const packed = items.filter(i => i.packed).length;
       const toPack = total - packed;
@@ -368,7 +380,6 @@
       let statusText = percent === 100 ? `<strong style="color:#4CAF50">Ready to Hit the Road!</strong>` : `<strong>Packing in Progress</strong>`;
       document.getElementById('heroText').innerHTML = `${packed} of ${total} packed ${statusText}`;
 
-      // 2. Group & Filter Items
       const container = document.getElementById('checklistContainer');
       container.innerHTML = '';
 
@@ -425,7 +436,6 @@
       });
     }
 
-    // Initialize App
     renderApp();
   </script>
 </body>
