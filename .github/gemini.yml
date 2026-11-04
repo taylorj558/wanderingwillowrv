@@ -1,0 +1,7 @@
+# Configuration for Gemini Code Assist on Wandering Willow RV
+code_review:
+  auto_review: true
+  style_guidelines:
+    - "Ensure all images use loading='lazy' and proper width/height dimensions."
+    - "Use semantic HTML5 elements for blog layouts and navigation."
+    - "Format external gear affiliate links with target='_blank' and rel='noopener noreferrer'."
