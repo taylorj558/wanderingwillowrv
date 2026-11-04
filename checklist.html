@@ -13,90 +13,252 @@
       --text: #222222;
       --border: #E2E0D8;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 15px; max-width: 800px; margin: 0 auto; }
-    h1 { color: var(--primary); font-size: 1.8rem; margin-bottom: 5px; }
-    p.subtitle { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
     
-    .progress-bar { background: var(--border); height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
-    .progress-fill { background: var(--secondary); height: 100%; width: 0%; transition: width 0.3s ease; }
-    
-    .category { background: var(--card-bg); border-radius: 8px; border: 1px solid var(--border); padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
-    .category h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; border-bottom: 2px solid var(--border); padding-bottom: 5px; }
-    
-    .item-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #F0ECE1; min-height: 44px; }
-    .item-row:last-child { border-bottom: none; }
-    .item-left { display: flex; align-items: center; gap: 10px; flex: 1; }
-    
-    input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--primary); cursor: pointer; }
-    label { font-size: 1rem; cursor: pointer; flex: 1; }
-    
-    .badge-approved { background: #E8F4EC; color: var(--primary); font-size: 0.75rem; font-weight: bold; padding: 3px 8px; border-radius: 12px; border: 1px solid #B8E0C4; white-space: nowrap; }
-    .delete-btn { background: none; border: none; color: #AA3333; font-size: 1.2rem; cursor: pointer; padding: 5px 10px; min-width: 44px; text-align: center; }
-    
-    .add-form { display: flex; gap: 8px; margin-top: 15px; }
-    .add-input { flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; }
-    .add-btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 6px; font-size: 1rem; cursor: pointer; }
-    
-    .controls { display: flex; justify-content: space-between; margin-top: 25px; gap: 10px; }
-    .action-btn { background: white; border: 1px solid var(--border); padding: 10px 15px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; flex: 1; text-align: center; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Site Header Navigation */
+    .site-header {
+      background: var(--primary);
+      color: white;
+      padding: 15px 20px;
+    }
+
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .brand-logo {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #E2E0D8;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    /* Main Content Container */
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 5px;
+    }
+
+    p.subtitle {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    /* Category Cards */
+    .category {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    .category h2 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 6px;
+    }
+
+    /* Interactive Item Rows */
+    .item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid #F0ECE1;
+      gap: 10px;
+    }
+
+    .item-row:last-child {
+      border-bottom: none;
+    }
+
+    .item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    label {
+      font-size: 1rem;
+      cursor: pointer;
+      flex: 1;
+    }
+
+    /* Badges & Buttons */
+    .badge-approved {
+      background: #E8F4EC;
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 12px;
+      border: 1px solid #B8E0C4;
+      white-space: nowrap;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: #AA3333;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .delete-btn:hover {
+      background: #FEE2E2;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 15px;
+    }
+
+    .action-btn {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      flex: 1;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .action-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
   </style>
 </head>
 <body>
 
-  <h1>RV Packing Checklist</h1>
-  <p class="subtitle">Interactive guide for family & dog adventures | Wandering Willow RV</p>
+  <!-- Site Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">Wandering Willow RV</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stories.html">Stories</a></li>
+        <li><a href="checklist.html" class="active">Packing Checklist</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </header>
 
-  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <!-- Main Checklist App -->
+  <div class="container">
+    <h1>RV Packing Checklist</h1>
+    <p class="subtitle">Interactive checklist tailored for RV travel with kids and pets.</p>
 
-  <div class="category">
-    <h2>RV Setup & Travel Safety</h2>
-    <div class="item-row">
-      <div class="item-left">
-        <input type="checkbox" id="item-1">
-        <label for="item-1">Travel Fridge Ice Packs (In case temps drop)</label>
+    <div class="category">
+      <h2>RV Setup & Safety</h2>
+      <div class="item-row">
+        <div class="item-left">
+          <input type="checkbox" id="item-1">
+          <label for="item-1">Travel Fridge Ice Packs (In case temps drop)</label>
+        </div>
+        <span class="badge-approved">Willow Approved</span>
+        <button class="delete-btn" onclick="this.parentElement.remove()" title="Remove item">✕</button>
       </div>
-      <span class="badge-approved">Willow Approved</span>
-      <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
-    </div>
-    <div class="item-row">
-      <div class="item-left">
-        <input type="checkbox" id="item-2">
-        <label for="item-2">Sewer Hose & Water Pressure Regulator</label>
+      <div class="item-row">
+        <div class="item-left">
+          <input type="checkbox" id="item-2">
+          <label for="item-2">Sewer Hose & Water Regulator</label>
+        </div>
+        <button class="delete-btn" onclick="this.parentElement.remove()" title="Remove item">✕</button>
       </div>
-      <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
     </div>
-  </div>
 
-  <div class="category">
-    <h2>Outdoor Living & Camp Kitchen</h2>
-    <div class="item-row">
-      <div class="item-left">
-        <input type="checkbox" id="item-3">
-        <label for="item-3">Lighter / Matches (Grill starter)</label>
+    <div class="category">
+      <h2>Camp Kitchen & Outdoor Living</h2>
+      <div class="item-row">
+        <div class="item-left">
+          <input type="checkbox" id="item-3">
+          <label for="item-3">Lighter / Matches (Grill starter)</label>
+        </div>
+        <button class="delete-btn" onclick="this.parentElement.remove()" title="Remove item">✕</button>
       </div>
-      <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
-    </div>
-    <div class="item-row">
-      <div class="item-left">
-        <input type="checkbox" id="item-4">
-        <label for="item-4">Citronella Candles & Bug Spray</label>
+      <div class="item-row">
+        <div class="item-left">
+          <input type="checkbox" id="item-4">
+          <label for="item-4">Citronella Candles & Bug Spray</label>
+        </div>
+        <span class="badge-approved">Willow Approved</span>
+        <button class="delete-btn" onclick="this.parentElement.remove()" title="Remove item">✕</button>
       </div>
-      <span class="badge-approved">Willow Approved</span>
-      <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
-    </div>
-    <div class="item-row">
-      <div class="item-left">
-        <input type="checkbox" id="item-5">
-        <label for="item-5">Sunscreen & UV Hats</label>
+      <div class="item-row">
+        <div class="item-left">
+          <input type="checkbox" id="item-5">
+          <label for="item-5">Sunscreen & UV Protection</label>
+        </div>
+        <button class="delete-btn" onclick="this.parentElement.remove()" title="Remove item">✕</button>
       </div>
-      <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
     </div>
-  </div>
 
-  <div class="controls">
-    <button class="action-btn" onclick="window.print()">🖨️ Print Checklist</button>
-    <button class="action-btn" onclick="location.reload()">🔄 Reset All Items</button>
+    <div class="controls">
+      <button class="action-btn" onclick="window.print()">🖨️ Print Checklist</button>
+      <button class="action-btn" onclick="location.reload()">🔄 Reset Checklist</button>
+    </div>
   </div>
 
 </body>
