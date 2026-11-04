@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RV Packing Checklist | Wandering Willow RV</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        willow: {
+                            50: '#f2f7f4',
+                            100: '#e1ede6',
+                            200: '#c5dcce',
+                            300: '#9ec1ac',
+                            400: '#72a185',
+                            500: '#528568',
+                            600: '#3f6a52',
+                            700: '#345543',
+                            800: '#2b4437',
+                            900: '#25392f',
+                            950: '#131f1a',
+                        },
+                        amber: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; padding: 0 !important; }
+            .print-shadow-none { box-shadow: none !important; border: 1px solid #e5e7eb !important; }
+            .print-break-inside-avoid { break-inside: avoid; }
+            .category-content { display: block !important; }
+            #page-home { display: none !important; }
+            #page-checklist { display: block !important; }
+        }
+        .progress-bar-transition { transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col selection:bg-willow-500 selection:text-white">
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-willow-950 border-b border-willow-800 text-white sticky top-0 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <button onclick="navigateTo('home')" class="flex items-center gap-2.5 font-heading text-lg font-bold hover:text-amber-400 transition-colors">
+                <i data-lucide="trees" class="w-6 h-6 text-willow-400"></i>
+                <span>Wandering Willow RV</span>
+            </button>
+            <div class="flex items-center gap-1 sm:gap-4 text-xs sm:text-sm font-semibold">
+                <button id="nav-home" onclick="navigateTo('home')" class="px-3 py-2 rounded-lg transition-colors bg-willow-800 text-amber-400">
+                    Home
+                </button>
+                <button id="nav-checklist" onclick="navigateTo('checklist')" class="px-3 py-2 rounded-lg transition-colors hover:bg-willow-900 text-willow-200 hover:text-white flex items-center gap-1.5">
+                    <i data-lucide="check-square" class="w-4 h-4"></i>
+                    <span>Packing Checklist</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: HOME PAGE -->
+    <div id="page-home" class="page-content">
+        <!-- Hero Header -->
+        <header class="bg-willow-900 text-white relative overflow-hidden border-b-4 border-amber-500 py-12 sm:py-16">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="space-y-4 max-w-2xl">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-willow-800 border border-willow-700 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+                        <i data-lucide="compass" class="w-4 h-4"></i> Travel Hub & Guides
+                    </span>
+                    <h1 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        Part-time wanderers.<br><span class="text-amber-400">Full-time family.</span>
+                    </h1>
+                    <p class="text-willow-200 text-base sm:text-lg">
+                        From tent camping origins to surviving Hurricane Michael off-grid in our camper, and now exploring in our 36-foot Sabre 5th wheel with kids and dogs.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3 justify-center sm:justify-start">
+                        <button onclick="navigateTo('checklist')" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-willow-950 font-extrabold rounded-xl transition-all shadow-lg flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span>Open RV Packing Checklist</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Home Highlights -->
+        <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+            <!-- Feature Promo Banner -->
+            <section class="bg-gradient-to-br from-willow-800 to-willow-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="space-y-2">
+                    <div class="text-amber-400 text-xs font-bold uppercase tracking-widest">Interactive Travel Tool</div>
+                    <h2 class="font-heading text-2xl sm:text-3xl font-bold">Never Leave Gear Behind Again</h2>
+                    <p class="text-willow-200 text-sm max-w-xl">
+                        Our interactive checklist includes everything from toddler essentials, dog tie-outs, fridge ice packs for travel days, bug spray, and grill starters to off-grid solar setups.
+                    </p>
+                </div>
+                <button onclick="navigateTo('checklist')" class="px-6 py-3 bg-white text-willow-900 font-bold rounded-xl hover:bg-amber-400 transition-all text-sm min-w-max shadow-md">
+                    Launch Interactive List &rarr;
+                </button>
+            </section>
+
+            <!-- Evolution Timeline -->
+            <section class="space-y-6">
+                <h2 class="font-heading text-2xl font-bold text-slate-800 flex items-center gap-2">
+                    <i data-lucide="history" class="w-6 h-6 text-willow-600"></i>
+                    <span>Our RV Journey Timeline</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="text-amber-600 font-extrabold text-sm mb-1">2007</div>
+                        <h3 class="font-bold text-slate-800">Tent Camping</h3>
+                        <p class="text-xs text-slate-500 mt-1">Starting simple under the stars with basic sleeping pads and coolers.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="text-amber-600 font-extrabold text-sm mb-1">2016</div>
+                        <h3 class="font-bold text-slate-800">First Travel Trailer</h3>
+                        <p class="text-xs text-slate-500 mt-1">Upgrading to hard walls, simple plumbing, and easier family road trips.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm border-l-4 border-l-amber-500">
+                        <div class="text-amber-600 font-extrabold text-sm mb-1">2018</div>
+                        <h3 class="font-bold text-slate-800">Hurricane Michael</h3>
+                        <p class="text-xs text-slate-500 mt-1">Surviving 11 days off-grid in our camper, teaching us resilience & power setup.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <div class="text-amber-600 font-extrabold text-sm mb-1">Present</div>
+                        <h3 class="font-bold text-slate-800">Sabre 36' 5th Wheel</h3>
+                        <p class="text-xs text-slate-500 mt-1">Full luxury-meets-family space with kids, dogs, and off-grid readiness.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- PAGE 2: PACKING CHECKLIST PAGE -->
+    <div id="page-checklist" class="page-content hidden">
+        <!-- Header Section -->
+        <header class="bg-willow-900 text-white relative overflow-hidden border-b-4 border-amber-500">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                    <div class="space-y-2">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-willow-800/80 border border-willow-700/60 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+                            <i data-lucide="trees" class="w-4 h-4"></i>
+                            <span>Wandering Willow RV Dedicated Tool</span>
+                        </div>
+                        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+                            Family & Pup RV Checklist
+                        </h1>
+                        <p class="text-willow-200 text-sm sm:text-base font-medium italic">
+                            "Part-Time Wanderers. Full-Time Family."
+                        </p>
+                    </div>
+
+                    <!-- Progress Card -->
+                    <div class="bg-willow-800/90 backdrop-blur border border-willow-700/80 rounded-2xl p-4 sm:p-5 text-white shadow-xl min-w-[240px]">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs uppercase font-bold text-willow-300 tracking-wider">Trip Ready Progress</span>
+                            <span id="overall-percentage" class="text-2xl font-extrabold text-amber-400 font-heading">0%</span>
+                        </div>
+                        <div class="w-full bg-willow-950 rounded-full h-3 overflow-hidden p-0.5 border border-willow-700">
+                            <div id="overall-progress-bar" class="bg-gradient-to-r from-amber-500 to-emerald-400 h-full rounded-full progress-bar-transition" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between items-center mt-3 text-xs text-willow-200">
+                            <span id="packed-count-text">0 of 0 packed</span>
+                            <span id="completion-status" class="font-semibold text-amber-300">Getting Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Checklist Controls -->
+        <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+            <div class="no-print bg-white rounded-2xl shadow-sm border border-slate-200/80 p-4 mb-8 space-y-4 sm:space-y-0 sm:flex sm:items-center sm:justify-between gap-4">
+                <div class="flex bg-slate-100 p-1 rounded-xl gap-1 text-xs sm:text-sm font-semibold text-slate-600">
+                    <button onclick="setFilter('all')" id="filter-all" class="flex-1 sm:flex-none px-4 py-2 rounded-lg transition-all bg-white text-willow-900 shadow-sm">
+                        All Items (<span id="count-all">0</span>)
+                    </button>
+                    <button onclick="setFilter('unchecked')" id="filter-unchecked" class="flex-1 sm:flex-none px-4 py-2 rounded-lg transition-all hover:text-willow-900">
+                        To Pack (<span id="count-unchecked">0</span>)
+                    </button>
+                    <button onclick="setFilter('checked')" id="filter-checked" class="flex-1 sm:flex-none px-4 py-2 rounded-lg transition-all hover:text-willow-900">
+                        Packed (<span id="count-checked">0</span>)
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                    <div class="relative flex-grow sm:flex-grow-0 sm:w-56">
+                        <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="search-input" oninput="handleSearch()" placeholder="Search item..." class="w-full pl-9 pr-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-willow-500">
+                    </div>
+
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <button onclick="window.print()" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors border border-slate-200">
+                            <i data-lucide="printer" class="w-4 h-4"></i>
+                            <span>Print</span>
+                        </button>
+                        <button onclick="resetAllChecks()" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3 py-2 bg-amber-50 hover:bg-amber-100 text-amber-800 text-xs font-semibold rounded-xl transition-colors border border-amber-200">
+                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                            <span>Reset</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Add Bar -->
+            <section class="no-print bg-gradient-to-r from-willow-50 to-emerald-50/50 rounded-2xl border border-willow-200 p-4 mb-8 shadow-sm">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <div class="flex items-center gap-2 text-willow-900 font-bold text-sm min-w-max">
+                        <i data-lucide="plus-circle" class="w-5 h-5 text-willow-600"></i>
+                        <span>Add Custom Item:</span>
+                    </div>
+                    <input type="text" id="custom-item-text" placeholder="e.g., Dog raincoat, Toddler sound machine..." class="flex-grow px-4 py-2.5 text-sm bg-white border border-willow-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-willow-500 shadow-sm">
+                    <select id="custom-item-category" class="px-3 py-2.5 text-sm bg-white border border-willow-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-willow-500 text-slate-700 font-medium"></select>
+                    <button onclick="addCustomItem()" class="px-5 py-2.5 bg-willow-700 hover:bg-willow-800 text-white font-semibold text-sm rounded-xl transition-all shadow-md flex items-center justify-center gap-1.5">
+                        <span>Add</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Printable Header -->
+            <div class="hidden print:block mb-6 border-b pb-4">
+                <h1 class="text-2xl font-bold text-slate-900">Wandering Willow RV - Family & Pup Packing List</h1>
+                <p class="text-xs text-slate-600">"Part-Time Wanderers. Full-Time Family." | Printed checklist for trip preparation.</p>
+            </div>
+
+            <!-- Checklist Categories Container -->
+            <div id="checklist-container" class="space-y-6"></div>
+
+            <div id="empty-state" class="hidden text-center py-12 px-4 bg-white rounded-2xl border border-dashed border-slate-300">
+                <i data-lucide="search-x" class="w-12 h-12 mx-auto text-slate-300 mb-3"></i>
+                <h3 class="text-lg font-bold text-slate-700 mb-1">No matching items found</h3>
+                <button onclick="resetFilters()" class="px-4 py-2 bg-willow-100 text-willow-800 rounded-xl text-xs font-bold hover:bg-willow-200 transition-colors">
+                    Reset Search & Filters
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="no-print fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none border border-slate-700">
+        <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+        <span id="toast-message" class="text-sm font-medium">Progress saved!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-8 no-print">
+        <div class="max-w-5xl mx-auto px-4 text-center sm:flex sm:items-center sm:justify-between text-slate-500 text-xs space-y-3 sm:space-y-0">
+            <div class="flex items-center justify-center sm:justify-start gap-2">
+                <i data-lucide="compass" class="w-4 h-4 text-willow-600"></i>
+                <span class="font-bold text-slate-700">Wandering Willow RV</span> &copy; 2026. Happy Trails!
+            </div>
+            <p>Designed for easy packing with toddlers, dogs, full-hookups, or off-grid setups.</p>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // Updated Master Categories featuring requested items
+        const DEFAULT_CATEGORIES = [
+            {
+                id: 'rv-setup',
+                title: 'RV Essentials & Travel Prep',
+                icon: 'truck',
+                description: 'Hookups, electrical protection, leveling, and travel day fridge care.',
+                items: [
+                    { id: 'rv-1', text: 'Surge Protector / Power Watchdog', checked: false, note: 'Crucial for electrical safety' },
+                    { id: 'rv-2', text: 'Travel Fridge Ice Packs', checked: false, note: 'Pop in fridge during travel in case temps drop' },
+                    { id: 'rv-3', text: 'Water Pressure Regulator', checked: false, note: 'Set to 40-50 PSI' },
+                    { id: 'rv-4', text: 'Fresh Water Hose (Drinking safe - Blue)', checked: false },
+                    { id: 'rv-5', text: 'Sewer Hose & Clear Elbow Connector', checked: false },
+                    { id: 'rv-6', text: 'Leveling Blocks & Wheel Chocks', checked: false },
+                    { id: 'rv-7', text: '30A to 50A / 15A Shore Power Adapters', checked: false },
+                    { id: 'rv-8', text: 'Tire Pressure Gauge & Heavy-Duty Jack', checked: false },
+                    { id: 'rv-9', text: 'Black Tank Treatment & Chemical Pods', checked: false }
+                ]
+            },
+            {
+                id: 'kid-gear',
+                title: 'Kid & Family Personal Care',
+                icon: 'baby',
+                description: 'Keep young wanderers safe, comfily dressed, and protected.',
+                items: [
+                    { id: 'kid-1', text: 'Sunscreen (Kid & Family Safe)', checked: false, note: 'Essential for long outdoor days' },
+                    { id: 'kid-2', text: 'Outdoor Play Yard / Folding Ground Mat', checked: false },
+                    { id: 'kid-3', text: 'Portable Sound Machine & Nightlight', checked: false },
+                    { id: 'kid-4', text: 'Non-Spill Toddler Cups & Snack Containers', checked: false },
+                    { id: 'kid-5', text: 'Favorite Comfort Blankets & Stuffed Animals', checked: false },
+                    { id: 'kid-6', text: 'Kids First Aid Kit (Band-Aids, Fever Reducer, Antiseptic)', checked: false },
+                    { id: 'kid-7', text: 'Wet Wipes & Extra Paper Towel Packs', checked: false },
+                    { id: 'kid-8', text: 'Extra Changes of Clothes (2x estimated days)', checked: false }
+                ]
+            },
+            {
+                id: 'kitchen-outdoor',
+                title: 'Outdoor Living & Grill Prep',
+                icon: 'utensils',
+                description: 'Campsite comfort, outdoor cooking, bug protection, and fire starters.',
+                items: [
+                    { id: 'ko-1', text: 'Bug Spray / Insect Repellent', checked: false, note: 'Keep mosquitoes away at dusk' },
+                    { id: 'ko-2', text: 'Citronella Candles', checked: false, note: 'Great for patio and picnic table setup' },
+                    { id: 'ko-3', text: 'Lighter / Matches / Grill Starter', checked: false, note: 'Fire up the grill or campfire' },
+                    { id: 'ko-4', text: 'Comfortable Camp Chairs', checked: false },
+                    { id: 'ko-5', text: 'Large Outdoor Patio Rug', checked: false },
+                    { id: 'ko-6', text: 'Portable Grill or Cast Iron Griddle', checked: false },
+                    { id: 'ko-7', text: 'Marshmallow & Hot Dog Roasting Sticks', checked: false },
+                    { id: 'ko-8', text: 'S’mores Kit (Graham crackers, Marshmallows, Chocolate)', checked: false }
+                ]
+            },
+            {
+                id: 'pup-essentials',
+                title: 'Dog & Pup Essentials',
+                icon: 'dog',
+                description: 'Happy paws, safe ties, and mess-free camp dogs.',
+                items: [
+                    { id: 'pup-1', text: 'Dog Food & Bowls', checked: false },
+                    { id: 'pup-2', text: 'Heavy-Duty Tie-Out Stake & Swivel Leash', checked: false },
+                    { id: 'pup-3', text: 'Dog Bed / Indoor Crate', checked: false },
+                    { id: 'pup-4', text: 'Waste Bags & Leash Dispenser', checked: false },
+                    { id: 'pup-5', text: 'Dedicated Towels for Muddy Paws', checked: false },
+                    { id: 'pup-6', text: 'Chew Toys & High-Value Treats', checked: false }
+                ]
+            },
+            {
+                id: 'off-grid',
+                title: 'Off-Grid & Emergency Resilience',
+                icon: 'zap',
+                description: 'Backup solar, power, water, and storm preparedness.',
+                items: [
+                    { id: 'og-1', text: 'Portable Power Station / Solar Generator', checked: false },
+                    { id: 'og-2', text: 'Portable Solar Panels & Charging Cables', checked: false },
+                    { id: 'og-3', text: 'Flashlights, Headlamps & Spare Batteries', checked: false },
+                    { id: 'og-4', text: 'NOAA Weather Radio (Battery/Crank powered)', checked: false },
+                    { id: 'og-5', text: 'Fire Extinguisher (Class ABC)', checked: false }
+                ]
+            }
+        ];
+
+        let categories = [];
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let collapsedCategories = {};
+        const STORAGE_KEY = 'wandering_willow_rv_checklist_v2';
+
+        // Navigation Switcher
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`page-${pageId}`).classList.remove('hidden');
+
+            const navHome = document.getElementById('nav-home');
+            const navChecklist = document.getElementById('nav-checklist');
+
+            if (pageId === 'home') {
+                navHome.className = 'px-3 py-2 rounded-lg transition-colors bg-willow-800 text-amber-400 font-bold';
+                navChecklist.className = 'px-3 py-2 rounded-lg transition-colors hover:bg-willow-900 text-willow-200 hover:text-white flex items-center gap-1.5';
+            } else {
+                navChecklist.className = 'px-3 py-2 rounded-lg transition-colors bg-willow-800 text-amber-400 font-bold flex items-center gap-1.5';
+                navHome.className = 'px-3 py-2 rounded-lg transition-colors hover:bg-willow-900 text-willow-200 hover:text-white';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadState();
+            populateCategoryDropdown();
+            renderChecklist();
+            updateProgress();
+            lucide.createIcons();
+        });
+
+        function loadState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    categories = parsed.categories || DEFAULT_CATEGORIES;
+                    collapsedCategories = parsed.collapsed || {};
+                } catch (e) {
+                    categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+                }
+            } else {
+                categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+            }
+        }
+
+        function saveState(showToastFlag = false) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify({ categories, collapsed: collapsedCategories }));
+            updateProgress();
+            if (showToastFlag) showToast("Progress saved!");
+        }
+
+        function populateCategoryDropdown() {
+            const select = document.getElementById('custom-item-category');
+            select.innerHTML = '';
+            categories.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat.id;
+                opt.textContent = cat.title;
+                select.appendChild(opt);
+            });
+        }
+
+        function renderChecklist() {
+            const container = document.getElementById('checklist-container');
+            container.innerHTML = '';
+            let totalVisibleItems = 0;
+
+            categories.forEach(category => {
+                const filteredItems = category.items.filter(item => {
+                    const matchesFilter = currentFilter === 'all' ? true : currentFilter === 'checked' ? item.checked : !item.checked;
+                    const matchesSearch = item.text.toLowerCase().includes(searchQuery.toLowerCase()) || (item.note && item.note.toLowerCase().includes(searchQuery.toLowerCase()));
+                    return matchesFilter && matchesSearch;
+                });
+
+                if (filteredItems.length === 0 && (searchQuery.trim() !== '' || currentFilter !== 'all')) return;
+
+                totalVisibleItems += filteredItems.length;
+                const catTotal = category.items.length;
+                const catChecked = category.items.filter(i => i.checked).length;
+                const catPct = catTotal > 0 ? Math.round((catChecked / catTotal) * 100) : 0;
+                const isCollapsed = collapsedCategories[category.id] || false;
+
+                const catCard = document.createElement('div');
+                catCard.className = 'bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden transition-all duration-200 print-shadow-none print-break-inside-avoid';
+                
+                catCard.innerHTML = `
+                    <div class="p-4 sm:p-5 bg-gradient-to-r from-slate-50 to-white flex items-center justify-between cursor-pointer select-none border-b border-slate-100" onclick="toggleCategory('${category.id}')">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-willow-100 text-willow-800 flex items-center justify-center font-bold">
+                                <i data-lucide="${category.icon || 'check-square'}" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-heading font-bold text-lg text-slate-800 flex items-center gap-2">
+                                    ${category.title}
+                                    <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-sans border border-slate-200">${catChecked}/${catTotal}</span>
+                                </h2>
+                                <p class="text-xs text-slate-500 hidden sm:block">${category.description}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="hidden sm:flex items-center gap-2 w-28">
+                                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-willow-600 h-full progress-bar-transition" style="width: ${catPct}%"></div>
+                                </div>
+                                <span class="text-xs font-bold text-slate-500 w-8 text-right">${catPct}%</span>
+                            </div>
+                            <button class="p-1.5 text-slate-400 hover:text-slate-700 rounded-lg no-print">
+                                <i data-lucide="${isCollapsed ? 'chevron-down' : 'chevron-up'}" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="category-content p-2 sm:p-4 ${isCollapsed ? 'hidden' : 'block'}">
+                        <div class="divide-y divide-slate-100">
+                            ${filteredItems.map(item => `
+                                <div class="py-2.5 px-3 rounded-xl hover:bg-slate-50/80 transition-colors flex items-start justify-between gap-3 group">
+                                    <label class="flex items-start gap-3 flex-grow cursor-pointer select-none py-0.5">
+                                        <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleItem('${category.id}', '${item.id}')" class="mt-1 w-5 h-5 text-willow-600 rounded border-slate-300 focus:ring-willow-500 transition cursor-pointer">
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-medium ${item.checked ? 'line-through text-slate-400' : 'text-slate-800'} transition-all">${escapeHtml(item.text)}</span>
+                                            ${item.note ? `<span class="text-xs text-amber-600 font-medium mt-0.5 flex items-center gap-1"><i data-lucide="info" class="w-3 h-3 inline"></i> ${escapeHtml(item.note)}</span>` : ''}
+                                        </div>
+                                    </label>
+                                    ${item.isCustom ? `<button onclick="deleteCustomItem('${category.id}', '${item.id}')" class="no-print opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-red-500 rounded" title="Delete custom item"><i data-lucide="trash-2" class="w-4 h-4"></i></button>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(catCard);
+            });
+
+            const emptyState = document.getElementById('empty-state');
+            if (totalVisibleItems === 0) emptyState.classList.remove('hidden');
+            else emptyState.classList.add('hidden');
+
+            lucide.createIcons();
+            updateCounts();
+        }
+
+        function toggleItem(catId, itemId) {
+            const category = categories.find(c => c.id === catId);
+            if (category) {
+                const item = category.items.find(i => i.id === itemId);
+                if (item) { item.checked = !item.checked; saveState(); renderChecklist(); }
+            }
+        }
+
+        function toggleCategory(catId) {
+            collapsedCategories[catId] = !collapsedCategories[catId];
+            saveState();
+            renderChecklist();
+        }
+
+        function addCustomItem() {
+            const textInput = document.getElementById('custom-item-text');
+            const catSelect = document.getElementById('custom-item-category');
+            const text = textInput.value.trim();
+            const catId = catSelect.value;
+            if (!text) return;
+
+            const category = categories.find(c => c.id === catId);
+            if (category) {
+                category.items.push({ id: 'custom-' + Date.now(), text, checked: false, isCustom: true });
+                textInput.value = '';
+                collapsedCategories[catId] = false;
+                saveState(true);
+                renderChecklist();
+            }
+        }
+
+        function deleteCustomItem(catId, itemId) {
+            const category = categories.find(c => c.id === catId);
+            if (category) {
+                category.items = category.items.filter(i => i.id !== itemId);
+                saveState();
+                renderChecklist();
+            }
+        }
+
+        function updateProgress() {
+            let total = 0, checked = 0;
+            categories.forEach(cat => cat.items.forEach(item => { total++; if (item.checked) checked++; }));
+            const percentage = total > 0 ? Math.round((checked / total) * 100) : 0;
+
+            document.getElementById('overall-percentage').textContent = `${percentage}%`;
+            document.getElementById('overall-progress-bar').style.width = `${percentage}%`;
+            document.getElementById('packed-count-text').textContent = `${checked} of ${total} packed`;
+
+            const statusEl = document.getElementById('completion-status');
+            if (percentage === 0) statusEl.textContent = 'Not Started';
+            else if (percentage < 50) statusEl.textContent = 'Packing in Progress';
+            else if (percentage < 100) statusEl.textContent = 'Almost Ready!';
+            else statusEl.textContent = 'Hitch Up & Roll Out! 🏕️';
+        }
+
+        function updateCounts() {
+            let total = 0, checked = 0, unchecked = 0;
+            categories.forEach(cat => cat.items.forEach(item => {
+                total++;
+                if (item.checked) checked++; else unchecked++;
+            }));
+            document.getElementById('count-all').textContent = total;
+            document.getElementById('count-unchecked').textContent = unchecked;
+            document.getElementById('count-checked').textContent = checked;
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+            ['all', 'unchecked', 'checked'].forEach(f => {
+                const btn = document.getElementById(`filter-${f}`);
+                btn.className = f === filter 
+                    ? 'flex-1 sm:flex-none px-4 py-2 rounded-lg transition-all bg-white text-willow-900 shadow-sm'
+                    : 'flex-1 sm:flex-none px-4 py-2 rounded-lg transition-all hover:text-willow-900 text-slate-600';
+            });
+            renderChecklist();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value;
+            renderChecklist();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            searchQuery = '';
+            setFilter('all');
+        }
+
+        function resetAllChecks() {
+            if (confirm("Reset all items for a new trip?")) {
+                categories.forEach(cat => cat.items.forEach(item => item.checked = false));
+                saveState(true);
+                renderChecklist();
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => toast.classList.add('translate-y-20', 'opacity-0'), 2500);
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' })[m]);
+        }
+    </script>
+</body>
+</html>
