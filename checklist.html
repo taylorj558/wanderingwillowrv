@@ -21,6 +21,9 @@
       background-color: var(--bg-cream);
       color: var(--text-dark);
       line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     /* Site Navigation Header */
@@ -37,7 +40,6 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
     }
 
     .brand-logo {
@@ -48,6 +50,17 @@
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    /* Mobile Nav Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 5px;
     }
 
     .nav-links {
@@ -66,11 +79,28 @@
       color: var(--accent-amber);
     }
 
+    @media (max-width: 600px) {
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 15px;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
     /* App Container */
     .container {
       max-width: 800px;
       margin: 25px auto;
       padding: 0 15px;
+      flex: 1; /* Pushes footer to bottom */
     }
 
     /* Header Title Block */
@@ -83,16 +113,10 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
 
-    .title-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
     .title-row h1 {
       color: var(--primary-green);
       font-size: 1.7rem;
+      margin-bottom: 5px;
     }
 
     p.subtitle {
@@ -102,10 +126,7 @@
     }
 
     /* Progress Bar */
-    .progress-container {
-      margin-top: 15px;
-    }
-
+    .progress-container { margin-top: 15px; }
     .progress-labels {
       display: flex;
       justify-content: space-between;
@@ -114,14 +135,12 @@
       color: var(--primary-green);
       margin-bottom: 6px;
     }
-
     .progress-track {
       background-color: var(--border-gray);
       height: 14px;
       border-radius: 7px;
       overflow: hidden;
     }
-
     .progress-fill {
       background-color: var(--accent-amber);
       height: 100%;
@@ -136,7 +155,6 @@
       border: 1px solid var(--border-gray);
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
 
     .category-card h2 {
@@ -145,9 +163,6 @@
       margin-bottom: 15px;
       border-bottom: 2px solid var(--bg-cream);
       padding-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     /* Item Rows */
@@ -159,17 +174,8 @@
       border-bottom: 1px solid #F3F1EA;
       gap: 10px;
     }
-
-    .item-row:last-child {
-      border-bottom: none;
-    }
-
-    .item-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex: 1;
-    }
+    .item-row:last-child { border-bottom: none; }
+    .item-left { display: flex; align-items: center; gap: 12px; flex: 1; }
 
     input[type="checkbox"] {
       width: 22px;
@@ -179,16 +185,8 @@
       flex-shrink: 0;
     }
 
-    label {
-      font-size: 1rem;
-      cursor: pointer;
-      flex: 1;
-    }
-
-    label.packed {
-      text-decoration: line-through;
-      color: #888;
-    }
+    label { font-size: 1rem; cursor: pointer; flex: 1; }
+    label.packed { text-decoration: line-through; color: #888; }
 
     /* Willow Approved Badge */
     .badge-approved {
@@ -211,9 +209,6 @@
       padding: 6px 10px;
       min-width: 44px;
       min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     /* Action Bar */
@@ -221,6 +216,7 @@
       display: flex;
       gap: 12px;
       margin-top: 25px;
+      margin-bottom: 40px;
     }
 
     .action-btn {
@@ -232,13 +228,41 @@
       font-size: 0.95rem;
       font-weight: bold;
       flex: 1;
-      text-align: center;
       color: var(--primary-green);
     }
 
-    .action-btn:hover {
-      border-color: var(--primary-green);
-      background-color: #F0F4F2;
+    /* Site Footer */
+    .site-footer {
+      background-color: var(--primary-green);
+      color: #E2E0D8;
+      padding: 40px 20px;
+      margin-top: auto;
+    }
+    .footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .footer-col h3 {
+      color: white;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul a {
+      color: #E2E0D8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover {
+      color: var(--accent-amber);
     }
   </style>
 </head>
@@ -247,10 +271,9 @@
   <!-- Site Navigation Header -->
   <header class="site-header">
     <div class="header-container">
-      <a href="index.html" class="brand-logo">
-        🌲 Wandering Willow RV
-      </a>
-      <ul class="nav-links">
+      <a href="index.html" class="brand-logo">🌲 Wandering Willow RV</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="stories.html">Stories</a></li>
         <li><a href="checklist.html" class="active">Packing Checklist</a></li>
@@ -278,10 +301,8 @@
       </div>
     </div>
 
-    <!-- Category 1 -->
     <div class="category-card">
       <h2>🚐 RV Setup & Travel Safety</h2>
-      
       <div class="item-row">
         <div class="item-left">
           <input type="checkbox" id="item-1" onchange="updateProgress()">
@@ -290,7 +311,6 @@
         <span class="badge-approved">🌲 Willow Approved</span>
         <button class="delete-btn" onclick="removeItem(this)">✕</button>
       </div>
-
       <div class="item-row">
         <div class="item-left">
           <input type="checkbox" id="item-2" onchange="updateProgress()">
@@ -300,10 +320,8 @@
       </div>
     </div>
 
-    <!-- Category 2 -->
     <div class="category-card">
       <h2>🍳 Camp Kitchen & Outdoor Living</h2>
-
       <div class="item-row">
         <div class="item-left">
           <input type="checkbox" id="item-3" onchange="updateProgress()">
@@ -311,7 +329,6 @@
         </div>
         <button class="delete-btn" onclick="removeItem(this)">✕</button>
       </div>
-
       <div class="item-row">
         <div class="item-left">
           <input type="checkbox" id="item-4" onchange="updateProgress()">
@@ -320,7 +337,6 @@
         <span class="badge-approved">🌲 Willow Approved</span>
         <button class="delete-btn" onclick="removeItem(this)">✕</button>
       </div>
-
       <div class="item-row">
         <div class="item-left">
           <input type="checkbox" id="item-5" onchange="updateProgress()">
@@ -330,14 +346,39 @@
       </div>
     </div>
 
-    <!-- Controls -->
     <div class="controls">
-      <button class="action-btn" onclick="window.print()">🖨️ Print Checklist</button>
-      <button class="action-btn" onclick="location.reload()">🔄 Reset Checklist</button>
+      <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+      <button class="action-btn" onclick="location.reload()">🔄 Reset</button>
     </div>
   </div>
 
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stories.html">Stories</a></li>
+          <li><a href="checklist.html">RV Packing Checklist</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Logic & Nav Toggle -->
   <script>
+    // Mobile Nav Toggle
+    const toggleBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (toggleBtn && navLinks) {
+      toggleBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+      });
+    }
+
+    // Progress Bar Logic
     function updateProgress() {
       const checkboxes = document.querySelectorAll('input[type="checkbox"]');
       let checkedCount = 0;
@@ -359,6 +400,7 @@
       document.getElementById('progressText').innerText = percentage + '% Packed';
     }
 
+    // Delete Item Logic
     function removeItem(button) {
       const row = button.closest('.item-row');
       if (row) {
