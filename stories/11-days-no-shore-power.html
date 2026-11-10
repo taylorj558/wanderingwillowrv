@@ -6,7 +6,6 @@
   <title>11 Days, No Shore Power, No Problem | Wandering Willow RV</title>
   <meta name="description" content="What Hurricane Michael taught us about RV ownership — and the gear that kept our family going when the grid didn't.">
   <link rel="canonical" href="https://www.wanderingwillowrv.com/stories/11-days-no-shore-power.html">
-  <!-- Social share preview (shows when the link is posted on Facebook, texts, etc.) -->
   <meta property="og:title" content="11 Days, No Shore Power, No Problem">
   <meta property="og:description" content="What Hurricane Michael taught us about RV ownership — and the gear that kept our family going when the grid didn't.">
   <meta property="og:image" content="https://www.wanderingwillowrv.com/assets/img/share-card.jpg">
@@ -16,29 +15,45 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  
+  <style>
+    /* Injected Standard Header/Footer overrides to ensure consistency */
+    .site-header { background: #F4F6F4; padding: 15px 20px; border-bottom: 1px solid #E0E4E0; }
+    .header-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #222222; font-size: 1.4rem; font-family: Georgia, serif; }
+    .logo-circle { background: #1F362B; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: Georgia, serif; font-size: 1.1rem; }
+    .menu-toggle { display: none; background: none; border: none; color: #1F362B; font-size: 1.8rem; cursor: pointer; padding: 5px 10px; }
+    .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; margin: 0; padding: 0; }
+    .nav-links a { color: #222222; text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 8px 18px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a.active, .nav-links a:hover { background: #1F362B; color: white; }
+
+    @media (max-width: 800px) {
+      .menu-toggle { display: block; }
+      .nav-links { display: none; width: 100%; flex-direction: column; gap: 10px; padding-top: 15px; }
+      .nav-links a { text-align: center; display: block; }
+      .nav-links.show { display: flex !important; }
+    }
+  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ============ HEADER (same on every page) ============ -->
+<!-- ============ HEADER ============ -->
 <header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="../index.html">
-      <span class="brand-mark">W</span>
-      <span class="brand-name">Wandering Willow</span>
+  <div class="header-container">
+    <a href="../index.html" class="brand-logo">
+      <div class="logo-circle">W</div>
+      Wandering Willow
     </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../stories.html" aria-current="page">Stories</a></li>
-        <li><a href="../gear.html">Our Gear</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open Navigation">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../stories.html" class="active">Stories</a></li>
+      <li><a href="../checklist.html">Packing Checklist</a></li>
+      <li><a href="../gear.html">Our Gear</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
   </div>
 </header>
 
@@ -54,7 +69,8 @@
   </header>
 
   <div class="wrap">
-    <div class="article-cover"><img src="../assets/img/stories/hurricane-michael.jpg" alt="Our camper set up on the property after Hurricane Michael"></div>
+    <!-- Updated this line to use your new scrapbook image! -->
+    <div class="article-cover"><img src="../assets/img/stories/off-grid-gear.jpg" alt="Off Grid RV Survival Gear Scrapbook"></div>
   </div>
 
   <div class="wrap narrow prose">
@@ -67,7 +83,8 @@
 
     <p>Eleven days. That's how long we cooked, showered, ran fans, charged devices, and kept life functioning — not inside our house, but in and around our camper. We had neighbors shelter with us. We were the family that was ready, and that experience has shaped how we think about RV ownership ever since.</p>
     <figure>
-      <img src="../assets/img/stories/hurrican-michael1.jpg" alt="Our temporary setup">
+      <!-- Fixed the spelling error here (hurrican -> hurricane) -->
+      <img src="../assets/img/stories/hurricane-michael-1.jpg" alt="Our temporary setup">
       <figcaption>Our temporary camp.</figcaption>
     </figure>
     <p>This post is about the gear that made that possible. Some of it we already owned. Some we added after. All of it we'd tell any RV family to have <em>before</em> they need it.</p>
@@ -206,7 +223,7 @@
 
 </main>
 
-<!-- ============ FOOTER (same on every page) ============ -->
+<!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
@@ -214,7 +231,6 @@
         <div class="footer-brand">Wandering Willow RV</div>
         <p>Part-time wanderers. Full-time family. Real advice from a family that camps with a toddler, dogs, and a fully packed truck.</p>
         <div class="socials">
-          <!-- Replace # with your profile links -->
           <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/></svg></a>
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3Z"/></svg></a>
           <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/></svg></a>
@@ -224,7 +240,9 @@
       <div>
         <h4>Explore</h4>
         <ul>
+          <li><a href="../index.html">Home</a></li>
           <li><a href="../stories.html">Stories</a></li>
+          <li><a href="../checklist.html">RV Packing Checklist</a></li>
           <li><a href="../gear.html">Our Gear</a></li>
           <li><a href="../about.html">About Us</a></li>
           <li><a href="../contact.html">Contact</a></li>
@@ -247,5 +265,19 @@
 </footer>
 
 <script src="../assets/js/main.js"></script>
+
+<!-- Mobile Menu Logic -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    if (toggleBtn && navLinks) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        navLinks.classList.toggle('show');
+      });
+    }
+  });
+</script>
 </body>
 </html>
