@@ -51,7 +51,7 @@
     .hp-header { display: flex; justify-content: space-between; align-items: center; color: white; font-weight: 600; font-size: 0.85rem; margin-bottom: 12px; letter-spacing: 0.5px; }
     .hp-percent { color: var(--secondary); font-size: 1.5rem; font-weight: 800; }
     .hp-track { background: rgba(0,0,0,0.4); height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
-    .hp-fill { background: var(--secondary); height: 100%; width: 0%; transition: width 0.4s ease; border-radius: 4px; }
+    .hp-fill { background: var(--secondary); height: 100%; width: 0%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 4px; }
     .hp-text { color: #A8B8B0; font-size: 0.85rem; }
     .hp-text strong { color: var(--secondary); font-weight: 600; }
 
@@ -61,11 +61,12 @@
     /* Toolbar Container */
     .toolbar { display: flex; flex-wrap: wrap; gap: 15px; justify-content: space-between; align-items: center; background: white; padding: 15px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
     .filter-group { display: flex; background: var(--bg); border-radius: 8px; padding: 4px; flex-wrap: wrap; }
-    .filter-btn { background: none; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; cursor: pointer; color: #666; font-weight: 500; }
+    .filter-btn { background: none; border: none; padding: 8px 16px; border-radius: 6px; font-size: 0.9rem; cursor: pointer; color: #666; font-weight: 500; transition: all 0.2s; }
     .filter-btn.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); font-weight: 600; }
     .action-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
     .search-input { padding: 9px 15px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; width: 200px; outline: none; }
-    .btn { padding: 9px 16px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 500; display: flex; align-items: center; gap: 6px; }
+    .btn { padding: 9px 16px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+    .btn:active { transform: scale(0.95); }
     .btn-outline { background: white; border: 1px solid var(--border); color: var(--text); }
     .btn-outline.orange { color: var(--secondary); border-color: rgba(227, 144, 40, 0.4); }
 
@@ -78,25 +79,44 @@
 
     /* Category Accordions */
     .category-card { background: white; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 15px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-    .cat-header { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: white; }
+    .category-card.cat-rv { border-top: 4px solid #4A7C59; }
+    .category-card.cat-kitchen { border-top: 4px solid #D97724; }
+    .category-card.cat-kids { border-top: 4px solid #6C5B7B; }
+    .category-card.cat-pets { border-top: 4px solid #8E6E53; }
+    
+    .cat-header { padding: 18px 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: white; transition: background 0.2s; }
+    .cat-header:hover { background: #FAFAFA; }
     .cat-title-area { display: flex; flex-direction: column; gap: 4px; }
     .cat-title { font-size: 1.1rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 10px; }
     .cat-count { font-size: 0.75rem; background: var(--bg); padding: 2px 8px; border-radius: 12px; color: #666; }
     .cat-progress-area { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; color: #666; font-weight: 600; }
     .cat-track { background: var(--bg); height: 6px; width: 100px; border-radius: 3px; overflow: hidden; }
-    .cat-fill { background: var(--willow-green); height: 100%; width: 0%; }
+    .cat-fill { background: var(--willow-green); height: 100%; width: 0%; transition: width 0.5s ease; }
     
     .cat-items { border-top: 1px solid var(--border); }
-    .item-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid #F7F7F7; gap: 12px; }
+    
+    /* Interactive Row Animations */
+    .item-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid #F7F7F7; gap: 12px; transition: all 0.3s ease; border-left: 4px solid transparent; }
     .item-row:last-child { border-bottom: none; }
+    .item-row.is-packed { background: rgba(44, 74, 62, 0.04); border-left: 4px solid var(--secondary); }
+    
     .item-left { display: flex; align-items: center; gap: 12px; flex: 1; cursor: pointer; }
-    input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--primary); cursor: pointer; }
-    .item-label { font-size: 0.95rem; color: var(--text); flex: 1; user-select: none; }
+    
+    /* Checkbox Pop Animation */
+    @keyframes checkPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--primary); cursor: pointer; transition: transform 0.2s; }
+    input[type="checkbox"]:checked { animation: checkPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    
+    .item-label { font-size: 0.95rem; color: var(--text); flex: 1; user-select: none; transition: color 0.3s, text-decoration 0.3s; }
     .item-label.packed { text-decoration: line-through; color: #999; }
     
     .badge-approved { background: #E8F4EC; color: var(--willow-green); font-size: 0.7rem; font-weight: 700; padding: 3px 8px; border-radius: 12px; border: 1px solid #B8E0C4; white-space: nowrap; }
-    .btn-delete { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; }
-    .btn-delete:hover { color: #AA3333; background: #FFF0F0; }
+    .btn-delete { background: none; border: none; color: #ccc; cursor: pointer; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 4px; transition: all 0.2s; }
+    .btn-delete:hover { color: #AA3333; background: #FFF0F0; transform: scale(1.1); }
     .hidden { display: none !important; }
 
     /* Site Footer Design */
@@ -118,6 +138,9 @@
     
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: #A8B8B0; }
   </style>
+  
+  <!-- Canvas Confetti Library for 100% Celebration -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
@@ -145,7 +168,7 @@
     <section class="hero-section">
       <div class="hero-container">
         <div class="hero-text">
-          <span class="hero-tag">WANDERING WILLOW RV DEDICATED TOOL</span>
+          <span class="hero-tag">🌲 WANDERING WILLOW RV DEDICATED TOOL</span>
           <h1>Family & Pup RV Checklist</h1>
           <p>"Part-Time Wanderers. Full-Time Family."</p>
         </div>
@@ -252,7 +275,7 @@
       }
     });
 
-    // --- Updated Default Items ---
+    // --- Default Items ---
     const defaultItems = [
       // RV Essentials
       { id: '1', text: 'Travel Fridge Ice Packs (In case temps drop)', cat: 'RV Essentials & Travel Prep', packed: false, approved: true },
@@ -298,7 +321,7 @@
       
       // Pets
       { id: '37', text: 'Chicken-free Small-Breed Puppy Food', cat: 'Pets', packed: false, approved: true },
-      { id: '38', text: 'Dean\'s Travel Bed / Crate', cat: 'Pets', packed: false, approved: false },
+      { id: '38', text: 'Willow\'s Travel Bed / Crate', cat: 'Pets', packed: false, approved: false },
       { id: '39', text: 'Dog Leash & Harness', cat: 'Pets', packed: false, approved: false },
       { id: '40', text: 'Dog Waste Bags', cat: 'Pets', packed: false, approved: false }
     ];
@@ -307,6 +330,7 @@
     let items = JSON.parse(localStorage.getItem('wwrv_items')) || [...defaultItems];
     let currentFilter = 'all';
     let searchQuery = '';
+    let previousPercent = 0; // Tracks progress to trigger confetti
 
     // Toolbar Listeners
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -374,6 +398,17 @@
       const toPack = total - packed;
       const percent = total === 0 ? 0 : Math.round((packed / total) * 100);
 
+      // Trigger Confetti Celebration if hitting 100%
+      if (percent === 100 && previousPercent < 100) {
+        confetti({
+          particleCount: 150,
+          spread: 80,
+          origin: { y: 0.5 },
+          colors: ['#1F362B', '#E39028', '#2C4A3E', '#FFFFFF']
+        });
+      }
+      previousPercent = percent;
+
       document.getElementById('countAll').innerText = total;
       document.getElementById('countToPack').innerText = toPack;
       document.getElementById('countPacked').innerText = packed;
@@ -381,7 +416,7 @@
       document.getElementById('heroPercent').innerText = `${percent}%`;
       document.getElementById('heroFill').style.width = `${percent}%`;
       
-      let statusText = percent === 100 ? `<strong style="color:#4CAF50">Ready to Hit the Road!</strong>` : `<strong>Packing in Progress</strong>`;
+      let statusText = percent === 100 ? `<strong style="color:#E39028">🌲 Ready to Hit the Road!</strong>` : `<strong>Packing in Progress</strong>`;
       document.getElementById('heroText').innerHTML = `${packed} of ${total} packed ${statusText}`;
 
       const container = document.getElementById('checklistContainer');
@@ -402,11 +437,18 @@
 
         if (catTotal === 0 && !searchQuery) return;
 
+        // Apply Color Coding Class
+        let catClass = 'cat-rv';
+        let catIcon = '🚐 🌲';
+        if (cat.includes('Kitchen')) { catClass = 'cat-kitchen'; catIcon = '🍳 🌲'; }
+        else if (cat.includes('Kids')) { catClass = 'cat-kids'; catIcon = '🧸 🌲'; }
+        else if (cat.includes('Pets')) { catClass = 'cat-pets'; catIcon = '🐾 🌲'; }
+
         const card = document.createElement('div');
-        card.className = 'category-card';
+        card.className = `category-card ${catClass}`;
         
         let itemsHtml = catItems.map(item => `
-          <div class="item-row">
+          <div class="item-row ${item.packed ? 'is-packed' : ''}">
             <div class="item-left" onclick="toggleItem('${item.id}')">
               <input type="checkbox" ${item.packed ? 'checked' : ''} onclick="event.stopPropagation(); toggleItem('${item.id}')">
               <span class="item-label ${item.packed ? 'packed' : ''}">${item.text}</span>
@@ -417,12 +459,6 @@
         `).join('');
 
         if (catItems.length === 0) itemsHtml = `<div class="item-row" style="color:#999; justify-content:center;">No items match current filter.</div>`;
-
-        // Map Category Icons
-        let catIcon = '🐾';
-        if(cat.includes('RV')) catIcon = '🚐';
-        else if(cat.includes('Kitchen')) catIcon = '🍳';
-        else if(cat.includes('Kids')) catIcon = '🧸';
 
         card.innerHTML = `
           <div class="cat-header" onclick="this.nextElementSibling.classList.toggle('hidden')">
