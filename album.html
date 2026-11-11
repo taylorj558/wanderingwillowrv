@@ -4,50 +4,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adventures Album | Wandering Willow RV</title>
-  
+  <meta name="description" content="Our digital scrapbook: photos from every campground and road trip the Wandering Willow family has taken.">
+  <link rel="canonical" href="https://www.wanderingwillowrv.com/album.html">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
   <!-- Global Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
-  
-  <!-- Standard Fonts + 'Caveat' for Handwritten Scrapbook Captions -->
+
+  <!-- Site fonts + 'Caveat' for handwritten scrapbook captions -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Georgia&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     /* ----------------------------------------------------
-       SCRAPBOOK ALBUM LAYOUT
+       ALBUM PAGE: trip stacks
        ---------------------------------------------------- */
-    .album-header { text-align: center; padding: 50px 20px 20px; }
-    .album-header h1 { font-family: Georgia, serif; font-size: 2.5rem; color: #1F362B; margin-bottom: 10px; }
-    .album-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .album-header { text-align: center; padding: 56px 20px 12px; }
+    .album-header h1 { margin-bottom: 10px; }
+    .album-header p { color: var(--ink-soft); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-    .album-container { max-width: 1100px; margin: 0 auto; padding: 20px; width: 100%; }
-    
-    /* Trip Grouping styling */
-    .trip-group { margin-bottom: 60px; }
-    .trip-title { font-family: 'Caveat', cursive; font-size: 2.5rem; color: #1F362B; margin-bottom: 20px; border-bottom: 2px dashed #C8D0C8; padding-bottom: 10px; display: inline-block; }
+    .album-container { max-width: 1140px; margin: 0 auto; padding: 36px 20px 80px; overflow-x: clip; }
+    .trip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 56px 40px; }
 
-    /* The Masonry Grid */
-    .scrapbook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; align-items: start; }
+    /* One trip = one stack of photos */
+    .trip { margin: 0; }
+    .trip-photos { display: none; }          /* the photo list only feeds the viewer */
 
-    /* The Polaroid Card */
-    .polaroid { background: white; padding: 15px 15px 30px 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-radius: 2px; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .polaroid:hover { transform: scale(1.05) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 10; }
-    
-    /* Image inside Polaroid */
-    .polaroid img { width: 100%; height: 250px; object-fit: cover; background: #EEE; border: 1px solid #EAEAEA; }
-    
-    /* Handwritten Caption */
-    .polaroid .caption { font-family: 'Caveat', cursive; font-size: 1.8rem; text-align: center; color: #333; margin-top: 15px; line-height: 1.1; }
+    .stack {
+      position: relative; display: block; width: 100%;
+      padding: 0; border: 0; background: none; cursor: pointer;
+      font: inherit; color: inherit; text-align: center;
+      aspect-ratio: 1 / 1.12;
+    }
+    .stack:focus-visible { outline: 3px solid var(--ember); outline-offset: 10px; border-radius: 4px; }
 
-    /* Masking Tape Effect */
-    .tape { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 100px; height: 30px; background: rgba(235, 228, 205, 0.85); box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 2; border-radius: 2px; opacity: 0.9; }
+    .print {
+      position: absolute; inset: 0 0 auto 0; height: 100%;
+      background: #fff; padding: 12px 12px 0;
+      box-shadow: 0 4px 14px rgba(0,0,0,.10);
+      border-radius: 2px;
+      transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+    }
+    .print .ph { width: 100%; height: 76%; background: #e7e2d6 center / cover no-repeat; }
+    .print.back-1 { transform: rotate(-6deg) translate(-6px, 4px); }
+    .print.back-2 { transform: rotate(5deg) translate(8px, 2px); }
+    .print.front  { transform: rotate(-1deg); }
+    .trip:nth-child(even) .print.front { transform: rotate(1.5deg); }
 
-    /* Auto-tilt effect */
-    .scrapbook-grid .polaroid:nth-child(even) { transform: rotate(3deg); }
-    .scrapbook-grid .polaroid:nth-child(odd) { transform: rotate(-2deg); }
-    .scrapbook-grid .polaroid:nth-child(3n) { transform: rotate(1deg); }
-    .scrapbook-grid .polaroid:nth-child(even) .tape { transform: translateX(-50%) rotate(4deg); }
+    .stack:hover .print.back-1, .stack:focus-visible .print.back-1 { transform: rotate(-11deg) translate(-22px, 6px); }
+    .stack:hover .print.back-2, .stack:focus-visible .print.back-2 { transform: rotate(10deg) translate(24px, 4px); }
+    .stack:hover .print.front,  .stack:focus-visible .print.front  { transform: rotate(0) translateY(-6px); box-shadow: 0 14px 30px rgba(0,0,0,.18); }
+
+    .print.front img { width: 100%; height: 76%; object-fit: cover; display: block; background: #e7e2d6; }
+    .tape {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg);
+      width: 96px; height: 28px; background: rgba(235, 228, 205, .9);
+      box-shadow: 0 1px 3px rgba(0,0,0,.1); border-radius: 2px; z-index: 2;
+    }
+    .stack-title { font-family: 'Caveat', cursive; font-size: 1.85rem; line-height: 1.05; color: #2b2b2b; margin-top: 10px; padding: 0 6px; }
+    .stack-meta { font-size: .82rem; color: var(--ink-soft); margin-top: 4px; letter-spacing: .02em; }
+    .count-badge {
+      position: absolute; right: 22px; top: 22px; z-index: 3;
+      background: rgba(23, 43, 32, .85); color: #fff; font-size: .78rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 999px;
+    }
+    .album-tip { text-align: center; color: var(--ink-soft); font-size: .95rem; margin: 48px 0 0; }
+
+    /* ----------------------------------------------------
+       FULL-SCREEN VIEWER
+       ---------------------------------------------------- */
+    .viewer { position: fixed; inset: 0; z-index: 200; background: #0e1410; color: #fff; display: none; flex-direction: column; }
+    .viewer.open { display: flex; }
+    body.viewer-lock { overflow: hidden; }
+
+    .v-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; }
+    .v-title { font-family: 'Caveat', cursive; font-size: 1.9rem; line-height: 1; }
+    .v-count { font-size: .85rem; color: #b9c2b4; margin-left: 10px; white-space: nowrap; }
+    .v-btn {
+      background: rgba(255,255,255,.1); border: 0; color: #fff; cursor: pointer;
+      width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    }
+    .v-btn:hover { background: rgba(255,255,255,.22); }
+    .v-btn:focus-visible { outline: 2px solid #f0c39f; outline-offset: 2px; }
+    .v-btn svg { width: 22px; height: 22px; }
+
+    .v-stage { position: relative; flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 0 64px; touch-action: pan-y; }
+    .v-figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; }
+    .v-figure img { max-width: 100%; max-height: calc(100vh - 230px); max-height: calc(100dvh - 230px); object-fit: contain; border-radius: 3px; box-shadow: 0 10px 40px rgba(0,0,0,.5); user-select: none; -webkit-user-drag: none; }
+    .v-caption { font-family: 'Caveat', cursive; font-size: 1.7rem; text-align: center; margin-top: 10px; min-height: 2rem; padding: 0 10px; }
+    .v-prev, .v-next { position: absolute; top: 50%; transform: translateY(-50%); }
+    .v-prev { left: 12px; } .v-next { right: 12px; }
+
+    .v-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 10px 16px 16px; scrollbar-width: thin; }
+    .v-thumbs button { flex: none; width: 64px; height: 64px; padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; background: #222; opacity: .55; }
+    .v-thumbs button[aria-current="true"] { border-color: #f0c39f; opacity: 1; }
+    .v-thumbs button:hover { opacity: 1; }
+    .v-thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    @media (max-width: 640px) {
+      .v-stage { padding: 0 8px; }
+      .v-prev, .v-next { top: auto; bottom: 8px; transform: none; background: rgba(0,0,0,.45); }
+      .v-figure img { max-height: calc(100dvh - 250px); }
+      .v-thumbs button { width: 52px; height: 52px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .print { transition: none; } }
   </style>
 </head>
 <body>
@@ -55,179 +116,268 @@
   <!-- Global Header Placeholder -->
   <div id="global-header"></div>
 
-  <main>
+  <main id="main">
     <div class="album-header">
-      <h1>Adventures & Memories</h1>
-      <p>A digital scrapbook of our favorite stops, off-grid setups, and moments on the road.</p>
+      <span class="eyebrow">Our digital scrapbook</span>
+      <h1>Adventures &amp; Memories</h1>
+      <p>Every campground, overlook, and campfire we've collected along the way. Tap a stack to flip through the trip.</p>
     </div>
 
     <div class="album-container">
+      <div class="trip-grid">
 
-      <!-- ==============================================
-           TRIP GROUP: Margaritaville RV Resort, Louisiana
-           ============================================== -->
-      <section class="trip-group">
-        <h2 class="trip-title">Margaritaville Resort, Louisiana</h2>
+<!--
+  ===================== HOW TO ADD A TRIP =====================
+  1. Upload the photos to assets/img/album/ (lowercase names, no spaces).
+  2. Copy one <article class="trip"> ... </article> block and paste it where you
+     want it in the grid (newest trips at the top).
+  3. Set data-title (shown in handwriting) and data-meta (place / date).
+  4. One <a> line per photo:
+        href          = the photo file
+        data-caption  = the handwritten caption in the viewer
+        link text     = a short description (used for Google + screen readers)
+  5. The FIRST photo is the cover. The 2nd and 3rd peek out behind it.
+  =============================================================
+-->
 
-        <div class="scrapbook-grid">
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-01-rolling-in.jpg" alt="Our Sabre and Ram truck pulling in under the covered check-in area" loading="lazy">
-            <div class="caption">Pulling in!</div>
+        <article class="trip" data-title="Margaritaville Resort" data-meta="Louisiana">
+          <div class="trip-photos">
+            <a href="assets/img/album/margaritaville-12-poolside-sunset.jpg" data-caption="Feet up, sun down">Feet up on a lounge chair by the pool at sunset</a>
+            <a href="assets/img/album/margaritaville-01-rolling-in.jpg" data-caption="Pulling in!">Our Sabre and Ram pulling in under the covered check-in area</a>
+            <a href="assets/img/album/margaritaville-02-sabre-under-cover.jpg" data-caption="Covered sites = shade all day">Our Sabre fifth wheel parked at a covered RV site</a>
+            <a href="assets/img/album/margaritaville-03-site-front.jpg" data-caption="Home for the week">Front view of our truck and Sabre under the site canopy</a>
+            <a href="assets/img/album/margaritaville-04-site-side.jpg" data-caption="All set up">Side view of the Sabre and truck at our covered site</a>
+            <a href="assets/img/album/margaritaville-05-site-setup.jpg" data-caption="Our little patio">Camp chairs and picnic table set up at our covered site</a>
+            <a href="assets/img/album/margaritaville-06-fire-pit-grill.jpg" data-caption="Every site gets a grill">Brick fire pit with a grill grate at the campsite</a>
+            <a href="assets/img/album/margaritaville-07-kids-park.jpg" data-caption="Kids&#x27; park next door">Kids&#x27; playground with shaded slides near the campsites</a>
+            <a href="assets/img/album/margaritaville-08-courts.jpg" data-caption="Courts + room to run">Grass field with pickleball and basketball courts</a>
+            <a href="assets/img/album/margaritaville-09-dog-park.jpg" data-caption="Dog park with agility toys">Fenced dog park with agility equipment</a>
+            <a href="assets/img/album/margaritaville-10-pups-exploring.jpg" data-caption="The pups approve 🐾">Our dogs sniffing around the big fenced dog park</a>
+            <a href="assets/img/album/margaritaville-11-splash-tower.jpg" data-caption="Splash tower time">Splash play tower with slides and water features in the pool</a>
+            <a href="assets/img/album/margaritaville-13-pool-bag.jpg" data-caption="Pool bag packed">Pool bag on a chair with the splash pad and sunset behind</a>
+            <a href="assets/img/album/margaritaville-14-water-tower.jpg" data-caption="The big water tower">The pool&#x27;s water tower dumping water at sunset</a>
+            <a href="assets/img/album/margaritaville-15-golden-hour.jpg" data-caption="Golden hour at the pool">Sun setting behind the water slides</a>
+            <a href="assets/img/album/margaritaville-16-covered-sites.jpg" data-caption="Rows of covered sites">Row of covered RV sites seen from our truck</a>
           </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-02-sabre-under-cover.jpg" alt="Our Sabre fifth wheel parked at a covered RV site" loading="lazy">
-            <div class="caption">Covered sites = shade all day</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-03-site-front.jpg" alt="Front view of our truck and Sabre under the site canopy" loading="lazy">
-            <div class="caption">Home for the week</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-04-site-side.jpg" alt="Side view of the Sabre and truck at our covered site" loading="lazy">
-            <div class="caption">All set up</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-05-site-setup.jpg" alt="Camp chairs and picnic table set up at our covered site" loading="lazy">
-            <div class="caption">Our little patio</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-06-fire-pit-grill.jpg" alt="Brick fire pit with a grill grate at the campsite" loading="lazy">
-            <div class="caption">Every site gets a grill</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-07-kids-park.jpg" alt="Kids' playground with shaded slides near the campsites" loading="lazy">
-            <div class="caption">Kids' park next door</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-08-courts.jpg" alt="Grass field with pickleball and basketball courts" loading="lazy">
-            <div class="caption">Courts + room to run</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-09-dog-park.jpg" alt="Fenced dog park with agility equipment" loading="lazy">
-            <div class="caption">Dog park with agility toys</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-10-pups-exploring.jpg" alt="Our dogs sniffing around the big fenced dog park" loading="lazy">
-            <div class="caption">The pups approve 🐾</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-11-splash-tower.jpg" alt="Splash play tower with slides and water features in the pool" loading="lazy">
-            <div class="caption">Splash tower time</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-12-poolside-sunset.jpg" alt="Feet up on a lounge chair by the pool at sunset" loading="lazy">
-            <div class="caption">Feet up, sun down</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-13-pool-bag.jpg" alt="Pool bag on a chair with the splash pad and sunset behind" loading="lazy">
-            <div class="caption">Pool bag packed</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-14-water-tower.jpg" alt="The pool's water tower dumping water at sunset" loading="lazy">
-            <div class="caption">The big water tower</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-15-golden-hour.jpg" alt="Sun setting behind the water slides" loading="lazy">
-            <div class="caption">Golden hour at the pool</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/album/margaritaville-16-covered-sites.jpg" alt="Row of covered RV sites seen from our truck" loading="lazy">
-            <div class="caption">Rows of covered sites</div>
-          </div>
-        </div>
-      </section>
+        </article>
 
-      <!-- ==============================================
-           TRIP GROUP 1: Splash RV Resort
-           ============================================== -->
-      <section class="trip-group">
-        <h2 class="trip-title">Splash RV Resort Adventures</h2>
-        
-        <div class="scrapbook-grid">
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-rockwood-morning.jpg" alt="Rockwood camper morning" loading="lazy">
-            <div class="caption">Morning sun on the Rockwood</div>
+        <article class="trip" data-title="Monte Sano State Park" data-meta="Huntsville, AL · February">
+          <div class="trip-photos">
+            <a href="assets/img/album/monte-sano-01-glamping-tent.jpg" data-caption="Glowing in the fog">Glamping tent lit with string lights in the foggy winter woods</a>
+            <a href="assets/img/album/monte-sano-02-saturn-v.jpg" data-caption="Rocket City!">The Saturn V rocket at the U.S. Space &amp; Rocket Center from the highway</a>
+            <a href="assets/img/album/monte-sano-03-rockwood-hitched.jpg" data-caption="Made it up the mountain">Our Ram towing the Rockwood in the park&#x27;s parking lot</a>
+            <a href="assets/img/album/monte-sano-04-drive-in.jpg" data-caption="Winding into the park">Winding park road through bare winter trees</a>
+            <a href="assets/img/album/monte-sano-05-mountain-views.jpg" data-caption="Mountain views for days!!">View through the winter trees to the valley below</a>
+            <a href="assets/img/album/monte-sano-06-deer-site-33.jpg" data-caption="Neighbor at site 33">A deer grazing in the leaves behind the site 33 marker</a>
+            <a href="assets/img/album/monte-sano-07-city-lights-table.jpg" data-caption="Huntsville lights from our site">Picnic table and outdoor rug with city lights through the trees</a>
+            <a href="assets/img/album/monte-sano-08-site-at-night.jpg" data-caption="Porch light on">Our camper door and steps lit up at night</a>
+            <a href="assets/img/album/monte-sano-09-city-lights.jpg" data-caption="The whole city below us">Huntsville city lights through the trees at night</a>
+            <a href="assets/img/album/monte-sano-10-campfire.jpg" data-caption="Campfire nights">Fire burning in our fire pit beside the camper</a>
+            <a href="assets/img/album/monte-sano-11-movie-night.jpg" data-caption="Outdoor movie night">Movie playing on the camper&#x27;s outdoor TV at night</a>
+            <a href="assets/img/album/monte-sano-12-the-crew.jpg" data-caption="The trip crew">Our two dogs, one in a pink Happy Camper shirt, inside the camper</a>
+            <a href="assets/img/album/monte-sano-13-treat-time.jpg" data-caption="Did someone say treat?">Our tan pup sitting politely and looking up</a>
           </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-rockwood-camp.jpg" alt="Rockwood camp setup" loading="lazy">
-            <div class="caption">The perfect patio setup</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-griddle-prep.jpg" alt="Camp griddle prep" loading="lazy">
-            <div class="caption">Getting the Blackstone ready</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-bacon-griddle.jpg" alt="Bacon on the griddle" loading="lazy">
-            <div class="caption">Camp breakfast is the best breakfast</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-poolside.jpg" alt="Relaxing by the pool" loading="lazy">
-            <div class="caption">Poolside views</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-scooter.jpg" alt="Electric scooter" loading="lazy">
-            <div class="caption">Our resort ride</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-sabre-rig.jpg" alt="Sabre fifth wheel" loading="lazy">
-            <div class="caption">The Sabre looking good!</div>
-          </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/splash-camp-dinner.jpg" alt="Camp dinner plate" loading="lazy">
-            <div class="caption">Dinner done right</div>
-          </div>
-        </div>
-      </section>
+        </article>
 
-      <!-- ==============================================
-           TRIP GROUP 2: The Front Field / Off-Grid
-           ============================================== -->
-      <section class="trip-group">
-        <h2 class="trip-title">11 Days Off-Grid</h2>
-        
-        <div class="scrapbook-grid">
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/hurricane-michael-1.jpg" alt="Front field camp" loading="lazy">
-            <div class="caption">Holding down the fort</div>
+        <article class="trip" data-title="Hidden Hollow RV Park" data-meta="Dothan, AL · our stop on the way to Florida">
+          <div class="trip-photos">
+            <a href="assets/img/album/hidden-hollow-01-sign.jpg" data-caption="Our halfway stop">Hidden Hollow RV Park sign lit up at night</a>
+            <a href="assets/img/album/hidden-hollow-11-pioneer-hitched.jpg" data-caption="Hitched and ready">Our Ram towing the Pioneer travel trailer</a>
+            <a href="assets/img/album/hidden-hollow-02-casino-drive.jpg" data-caption="Rolling past the casino">Drive past the Magnolia Creek casino grounds</a>
+            <a href="assets/img/album/hidden-hollow-03-amphitheater.jpg" data-caption="Big Creek Amphitheater">Big Creek Amphitheater building near the park</a>
+            <a href="assets/img/album/hidden-hollow-04-amphitheater-gate.jpg" data-caption="Concert grounds next door">Brick and iron fence around the amphitheater</a>
+            <a href="assets/img/album/hidden-hollow-05-rolling-in.jpg" data-caption="Wide, easy roads">Driving in past rows of concrete RV pads</a>
+            <a href="assets/img/album/hidden-hollow-06-bathhouse.jpg" data-caption="Bathhouse with a porch">Bathhouse with a covered porch and stone columns</a>
+            <a href="assets/img/album/hidden-hollow-07-pull-through.jpg" data-caption="Long concrete pads">Truck and fifth wheel on a long concrete site</a>
+            <a href="assets/img/album/hidden-hollow-08-full-hookups.jpg" data-caption="Full hookups">Fifth wheel on a full-hookup site with grass</a>
+            <a href="assets/img/album/hidden-hollow-09-dog-park.jpg" data-caption="Dog park for the pups">Fenced dog park with agility equipment</a>
+            <a href="assets/img/album/hidden-hollow-10-dog-pavilion.jpg" data-caption="Shade for the humans">Covered pavilion with picnic tables at the dog park</a>
           </div>
-          <div class="polaroid">
-            <div class="tape"></div>
-            <img src="assets/img/stories/off-grid-gear.jpg" alt="Gear layout" loading="lazy">
-            <div class="caption">The gear that saved us</div>
-          </div>
-        </div>
-      </section>
+        </article>
 
+        <article class="trip" data-title="Splash RV Resort" data-meta="Milton, FL · July 4th">
+          <div class="trip-photos">
+            <a href="assets/img/stories/splash-sabre-rig.jpg" data-caption="The Sabre looking good!">Sabre fifth wheel at Splash RV Resort</a>
+            <a href="assets/img/stories/splash-rockwood-morning.jpg" data-caption="Morning sun on the Rockwood">Rockwood camper in the morning</a>
+            <a href="assets/img/stories/splash-rockwood-camp.jpg" data-caption="The perfect patio setup">Rockwood camp setup</a>
+            <a href="assets/img/stories/splash-griddle-prep.jpg" data-caption="Getting the Blackstone ready">Camp griddle prep</a>
+            <a href="assets/img/stories/splash-bacon-griddle.jpg" data-caption="Camp breakfast is the best breakfast">Bacon on the griddle</a>
+            <a href="assets/img/stories/splash-poolside.jpg" data-caption="Poolside views">Relaxing by the pool</a>
+            <a href="assets/img/stories/splash-scooter.jpg" data-caption="Our resort ride">Electric scooter</a>
+            <a href="assets/img/stories/splash-camp-dinner.jpg" data-caption="Dinner done right">Camp dinner plate</a>
+          </div>
+        </article>
+
+        <article class="trip" data-title="Cheaha State Park" data-meta="Alabama · 2021">
+          <div class="trip-photos">
+            <a href="assets/img/album/cheaha-01-misty-overlook.jpg" data-caption="Top of Alabama">Misty valley view from the Cheaha overlook path</a>
+            <a href="assets/img/album/cheaha-02-through-town.jpg" data-caption="Through town">Our Ram towing the Pioneer through an intersection</a>
+            <a href="assets/img/album/cheaha-03-truck-and-pioneer.jpg" data-caption="Quick stop">Our Ram and Pioneer parked in a lot</a>
+            <a href="assets/img/album/cheaha-04-rainy-climb.jpg" data-caption="Rainy climb up the mountain">Rainy mountain road seen through the windshield</a>
+            <a href="assets/img/album/cheaha-05-our-site.jpg" data-caption="Home in the trees">Our Pioneer at a wooded campsite</a>
+            <a href="assets/img/album/cheaha-06-site-pup.jpg" data-caption="Site inspector on duty">Our pup checking out the campsite by the fire ring</a>
+            <a href="assets/img/album/cheaha-07-camp-chairs.jpg" data-caption="Two chairs, no plans">Two camp chairs beside the camper</a>
+            <a href="assets/img/album/cheaha-08-under-the-awning.jpg" data-caption="Under the awning">Camp chair and picnic table under the awning</a>
+            <a href="assets/img/album/cheaha-09-breakfast.jpg" data-caption="I know these dogs are helping with breakfast..">James cooking breakfast on the griddle</a>
+            <a href="assets/img/album/cheaha-10-campfire.jpg" data-caption="Campfire glow">Campfire in the fire ring at night</a>
+            <a href="assets/img/album/cheaha-11-overlook-dusk.jpg" data-caption="Fog rolling in">Overlook view of the valley with low clouds</a>
+            <a href="assets/img/album/cheaha-12-valley-fog.jpg" data-caption="Clouds below us">Low clouds settled in the valley below the mountain</a>
+            <a href="assets/img/album/cheaha-13-overlook-clouds.jpg" data-caption="Worth the drive">Wide valley view with stone wall and walking path</a>
+            <a href="assets/img/album/cheaha-14-lodge-deck.jpg" data-caption="The view from the deck">Lodge deck overlooking the misty valley</a>
+          </div>
+        </article>
+
+        <article class="trip" data-title="11 Days Off-Grid" data-meta="Hurricane Michael · 2018">
+          <div class="trip-photos">
+            <a href="assets/img/stories/hurricane-michael-1.jpg" data-caption="Holding down the fort">Our camper set up in the front field after the storm</a>
+            <a href="assets/img/stories/off-grid-gear.jpg" data-caption="The gear that saved us">Our off-grid gear laid out</a>
+          </div>
+        </article>
+
+      </div>
+      <p class="album-tip">Tip: use the arrow keys or swipe to flip through photos.</p>
     </div>
   </main>
 
+  <!-- Full-screen photo viewer (filled in by the script below) -->
+  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="v-title" hidden>
+    <div class="v-top">
+      <div><span class="v-title" id="v-title"></span><span class="v-count" id="v-count"></span></div>
+      <button class="v-btn v-close" type="button" aria-label="Close album">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="v-stage">
+      <button class="v-btn v-prev" type="button" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <figure class="v-figure">
+        <img id="v-img" alt="">
+        <figcaption class="v-caption" id="v-caption"></figcaption>
+      </figure>
+      <button class="v-btn v-next" type="button" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="v-thumbs" id="v-thumbs" aria-label="All photos in this trip"></div>
+  </div>
+
   <!-- Global Footer Placeholder -->
   <div id="global-footer"></div>
+
+  <!-- Album stacks + viewer -->
+  <script>
+  (function () {
+    var trips = Array.prototype.slice.call(document.querySelectorAll(".trip"));
+    var viewer = document.getElementById("viewer");
+    var vImg = document.getElementById("v-img");
+    var vCap = document.getElementById("v-caption");
+    var vTitle = document.getElementById("v-title");
+    var vCount = document.getElementById("v-count");
+    var vThumbs = document.getElementById("v-thumbs");
+    var current = null, index = 0, lastStack = null;
+
+    function photosOf(trip) {
+      return Array.prototype.map.call(trip.querySelectorAll(".trip-photos a"), function (a) {
+        return { src: a.getAttribute("href"), caption: a.dataset.caption || "", alt: a.textContent.trim() };
+      });
+    }
+
+    // Build the stack for each trip
+    trips.forEach(function (trip) {
+      var photos = photosOf(trip);
+      if (!photos.length) return;
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "stack";
+      btn.setAttribute("aria-label", "Open " + trip.dataset.title + " album, " + photos.length + " photos");
+      var html = "";
+      if (photos[2]) html += '<div class="print back-2" aria-hidden="true"><div class="ph" style="background-image:url(\'' + photos[2].src + '\')"></div></div>';
+      if (photos[1]) html += '<div class="print back-1" aria-hidden="true"><div class="ph" style="background-image:url(\'' + photos[1].src + '\')"></div></div>';
+      html += '<div class="print front"><div class="tape"></div><span class="count-badge">' + photos.length + ' photos</span>' +
+              '<img src="' + photos[0].src + '" alt="' + photos[0].alt.replace(/"/g, "&quot;") + '" loading="lazy">' +
+              '<div class="stack-title"></div><div class="stack-meta"></div></div>';
+      btn.innerHTML = html;
+      btn.querySelector(".stack-title").textContent = trip.dataset.title;
+      btn.querySelector(".stack-meta").textContent = trip.dataset.meta || "";
+      btn.addEventListener("click", function () { lastStack = btn; openTrip(trip, 0); });
+      trip.insertBefore(btn, trip.firstChild);
+    });
+
+    function openTrip(trip, start) {
+      current = { title: trip.dataset.title, photos: photosOf(trip) };
+      vTitle.textContent = current.title;
+      vThumbs.innerHTML = "";
+      current.photos.forEach(function (p, i) {
+        var t = document.createElement("button");
+        t.type = "button";
+        t.setAttribute("aria-label", "Photo " + (i + 1) + ": " + (p.caption || p.alt));
+        t.innerHTML = '<img loading="lazy" alt="">';
+        t.firstChild.src = p.src;
+        t.addEventListener("click", function () { show(i); });
+        vThumbs.appendChild(t);
+      });
+      viewer.hidden = false;
+      viewer.classList.add("open");
+      document.body.classList.add("viewer-lock");
+      show(start || 0);
+      viewer.querySelector(".v-close").focus();
+    }
+
+    function show(i) {
+      var n = current.photos.length;
+      index = (i + n) % n;
+      var p = current.photos[index];
+      vImg.src = p.src;
+      vImg.alt = p.alt;
+      vCap.textContent = p.caption;
+      vCount.textContent = (index + 1) + " / " + n;
+      Array.prototype.forEach.call(vThumbs.children, function (b, k) {
+        b.setAttribute("aria-current", k === index ? "true" : "false");
+      });
+      var active = vThumbs.children[index];
+      if (active) active.scrollIntoView({ block: "nearest", inline: "center" });
+      [index + 1, index - 1].forEach(function (k) { new Image().src = current.photos[(k + n) % n].src; }); // preload neighbors
+    }
+
+    function close() {
+      viewer.classList.remove("open");
+      viewer.hidden = true;
+      document.body.classList.remove("viewer-lock");
+      vImg.removeAttribute("src");
+      if (lastStack) lastStack.focus();
+    }
+
+    viewer.querySelector(".v-close").addEventListener("click", close);
+    viewer.querySelector(".v-prev").addEventListener("click", function () { show(index - 1); });
+    viewer.querySelector(".v-next").addEventListener("click", function () { show(index + 1); });
+    viewer.addEventListener("click", function (e) { if (e.target.classList.contains("v-stage")) close(); });
+
+    document.addEventListener("keydown", function (e) {
+      if (!viewer.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowRight") show(index + 1);
+      else if (e.key === "ArrowLeft") show(index - 1);
+      else if (e.key === "Tab") { // keep keyboard focus inside the viewer
+        var f = viewer.querySelectorAll("button");
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Swipe on phones
+    var startX = null;
+    var stage = viewer.querySelector(".v-stage");
+    stage.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+      startX = null;
+    });
+  })();
+  </script>
 
   <!-- Central JS Script -->
   <script src="/assets/js/main.js?v=update"></script>
