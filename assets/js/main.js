@@ -43,3 +43,35 @@ document.querySelectorAll('.card-media img, .photo-frame img, .article-cover img
 
 // Keep the footer year current
 document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Load Global Header
+  const headerPlaceholder = document.getElementById("global-header");
+  if (headerPlaceholder) {
+    fetch("/components/header.html")
+      .then(response => response.text())
+      .then(data => {
+        headerPlaceholder.innerHTML = data;
+        
+        // Re-attach mobile menu logic after header is loaded
+        const toggleBtn = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (toggleBtn && navLinks) {
+          toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.classList.toggle('show');
+          });
+        }
+      });
+  }
+
+  // Load Global Footer
+  const footerPlaceholder = document.getElementById("global-footer");
+  if (footerPlaceholder) {
+    fetch("/components/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        footerPlaceholder.innerHTML = data;
+      });
+  }
+});
