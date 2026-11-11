@@ -1,46 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Load Global Header
+  // Check if we are deep in a folder (like /stories/) to adjust the path
+  const isSubfolder = window.location.pathname.includes('/stories/');
+  const basePath = isSubfolder ? '../' : './';
+
+  // 1. Fetch and inject Header
   const headerPlaceholder = document.getElementById("global-header");
   if (headerPlaceholder) {
-    fetch("/components/header.html")
-      .then(response => response.text())
+    fetch(basePath + "components/header.html")
+      .then(response => {
+        if (!response.ok) throw new Error("Header fetch failed");
+        return response.text();
+      })
       .then(data => {
         headerPlaceholder.innerHTML = data;
-
-        // Attach Mobile Menu Toggle Logic
+        
+        // Re-attach the mobile menu logic after the header exists
         const toggleBtn = document.getElementById('menuToggle');
         const nav = document.getElementById('site-nav');
         if (toggleBtn && nav) {
           toggleBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-            toggleBtn.setAttribute('aria-expanded', !isExpanded);
             nav.classList.toggle('show');
           });
         }
-
-        // Auto-Highlight Active Page Link
-        const currentPath = window.location.pathname;
-        const links = headerPlaceholder.querySelectorAll("nav a");
-        links.forEach(link => {
-          const linkPath = link.getAttribute("href");
-          if (currentPath === linkPath || (linkPath !== "/" && currentPath.startsWith(linkPath))) {
-            link.setAttribute("aria-current", "page");
-            link.classList.add("active");
-          }
-        });
       })
-      .catch(err => console.error("Error loading header:", err));
+      .catch(err => console.log("Header blocked (are you viewing this locally?):", err));
   }
 
-  // Load Global Footer
+  // 2. Fetch and inject Footer
   const footerPlaceholder = document.getElementById("global-footer");
   if (footerPlaceholder) {
-    fetch("/components/footer.html")
-      .then(response => response.text())
+    fetch(basePath + "components/footer.html")
+      .then(response => {
+        if (!response.ok) throw new Error("Footer fetch failed");
+        return response.text();
+      })
       .then(data => {
         footerPlaceholder.innerHTML = data;
       })
-      .catch(err => console.error("Error loading footer:", err));
+      .catch(err => console.log("Footer blocked (are you viewing this locally?):", err));
   }
 });
