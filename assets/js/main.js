@@ -1,49 +1,3 @@
-// Wandering Willow RV — small helpers. No libraries needed.
-
-// Mobile menu toggle
-(function () {
-  var btn = document.querySelector('.nav-toggle');
-  var nav = document.getElementById('site-nav');
-  if (!btn || !nav) return;
-  btn.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-})();
-
-// If a card/cover photo is missing, show the colored placeholder instead of a broken image.
-document.querySelectorAll('.card-media img, .photo-frame img, .article-cover img, .product-img img, .hero-img, .prose figure img').forEach(function (img) {
-  function fail() {
-    var parent = img.parentElement;
-    // Missing photo inside a story or product card: hide the whole frame
-    if (parent && (parent.tagName === 'FIGURE' || parent.classList.contains('product-img'))) { parent.remove(); return; }
-    img.remove();
-    if (parent && parent.classList.contains('card-media')) parent.classList.add('no-img');
-  }
-  if (img.complete && img.naturalWidth === 0) fail();
-  else img.addEventListener('error', fail);
-});
-
-// Story filters (stories.html): buttons with data-filter, cards with data-category="a b c"
-(function () {
-  var chips = document.querySelectorAll('.chip[data-filter]');
-  if (!chips.length) return;
-  var cards = document.querySelectorAll('[data-category]');
-  chips.forEach(function (chip) {
-    chip.addEventListener('click', function () {
-      var f = chip.getAttribute('data-filter');
-      chips.forEach(function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
-      cards.forEach(function (card) {
-        var cats = (card.getAttribute('data-category') || '').split(' ');
-        card.hidden = !(f === 'all' || cats.indexOf(f) !== -1);
-      });
-    });
-  });
-})();
-
-// Keep the footer year current
-document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
-
 document.addEventListener("DOMContentLoaded", () => {
   // Load Global Header
   const headerPlaceholder = document.getElementById("global-header");
@@ -52,17 +6,31 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => response.text())
       .then(data => {
         headerPlaceholder.innerHTML = data;
-        
-        // Re-attach mobile menu logic after header is loaded
+
+        // Attach Mobile Menu Toggle Logic
         const toggleBtn = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        if (toggleBtn && navLinks) {
+        const nav = document.getElementById('site-nav');
+        if (toggleBtn && nav) {
           toggleBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            navLinks.classList.toggle('show');
+            const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+            toggleBtn.setAttribute('aria-expanded', !isExpanded);
+            nav.classList.toggle('show');
           });
         }
-      });
+
+        // Auto-Highlight Active Page Link
+        const currentPath = window.location.pathname;
+        const links = headerPlaceholder.querySelectorAll("nav a");
+        links.forEach(link => {
+          const linkPath = link.getAttribute("href");
+          if (currentPath === linkPath || (linkPath !== "/" && currentPath.startsWith(linkPath))) {
+            link.setAttribute("aria-current", "page");
+            link.classList.add("active");
+          }
+        });
+      })
+      .catch(err => console.error("Error loading header:", err));
   }
 
   // Load Global Footer
@@ -72,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => response.text())
       .then(data => {
         footerPlaceholder.innerHTML = data;
-      });
+      })
+      .catch(err => console.error("Error loading footer:", err));
   }
 });
