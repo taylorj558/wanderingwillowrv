@@ -33,6 +33,17 @@
       .nav-links a { text-align: center; display: block; }
       .nav-links.show { display: flex !important; }
     }
+    /* Uncrop the Story Hero Image */
+    .article-cover {
+      height: auto !important; 
+      max-height: none !important;
+    }
+    .article-cover img {
+      height: auto !important;
+      max-height: none !important;
+      object-fit: contain !important;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
