@@ -1,18 +1,22 @@
 <header class="site-header">
-  <div class="header-container">
-    <a href="/" class="brand-logo">
-      <div class="logo-circle">W</div>
-      Wandering Willow
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="brand-mark">W</span>
+      <span class="brand-name">Wandering Willow</span>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open Navigation">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="/">Home</a></li>
-      <li><a href="/stories.html">Stories</a></li>
-      <li><a href="/album.html">Album</a></li>
-      <li><a href="/checklist.html">Packing Checklist</a></li>
-      <li><a href="/gear.html">Our Gear</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/contact.html">Contact</a></li>
-    </ul>
+    <button class="nav-toggle" id="menuToggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/stories.html">Stories</a></li>
+        <li><a href="/album.html">Album</a></li>
+        <li><a href="/checklist.html">Packing Checklist</a></li>
+        <li><a href="/gear.html">Our Gear</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
