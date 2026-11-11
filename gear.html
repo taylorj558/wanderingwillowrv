@@ -6,7 +6,7 @@
   <title>Our Gear | Wandering Willow RV</title>
   <meta name="description" content="The RV gear our family actually uses — power, water, campground life, and storm prep.">
   <link rel="canonical" href="https://www.wanderingwillowrv.com/gear.html">
-  <!-- Social share preview (shows when the link is posted on Facebook, texts, etc.) -->
+  <!-- Social share preview -->
   <meta property="og:title" content="Our Gear">
   <meta property="og:description" content="The RV gear our family actually uses — power, water, campground life, and storm prep.">
   <meta property="og:image" content="https://www.wanderingwillowrv.com/assets/img/share-card.jpg">
@@ -20,28 +20,8 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ============ HEADER (same on every page) ============ -->
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">W</span>
-      <span class="brand-name">Wandering Willow</span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <nav class="nav" id="site-nav" aria-label="Main">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="stories.html">Stories</a></li>
-        <li><a href="checklist.html">Packing Checklist</a></li>
-        <li><a href="gear.html" aria-current="page">Our Gear</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<!-- ============ HEADER ============ -->
+<div id="global-header"></div>
 
 <main id="main">
 <!--
@@ -60,6 +40,7 @@
     <div class="filters" style="margin:24px 0 0">
       <a class="chip" href="#power" style="text-decoration:none">🔋 Power</a>
       <a class="chip" href="#water" style="text-decoration:none">💧 Water</a>
+      <a class="chip" href="#towing" style="text-decoration:none">🚚 Towing & Suspension</a>
       <a class="chip" href="#campground" style="text-decoration:none">🛴 Campground life</a>
       <a class="chip" href="#essentials" style="text-decoration:none">🧰 Essentials</a>
     </div>
@@ -73,7 +54,7 @@
     <h2 id="power">🔋 Power</h2>
     <div class="product-grid">
       <article class="product">
-        <div class="product-img"><img src="assets/img/gear/oupes-mega-1.jpg" alt="Oupes Mega 1 portable power station"></div>
+        <div class="product-img"><img src="assets/img/gear/oupes-mega-1.jpg" alt="Oupes Mega 1 portable power station" loading="lazy"></div>
         <span class="badge">Our pick</span>
         <h4>Oupes Mega 1</h4>
         <p>What we run in the Sabre. Handles our fridge, James's CPAP, and all our device charging — and it's light enough to carry outside for a porch fan.</p>
@@ -81,27 +62,27 @@
         <a class="btn btn-primary" href="https://amzn.to/4es1JcD" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
       <article class="product">
-        <div class="product-img"><img src="assets/img/gear/friend-generator.jpg" alt="Oupes Mega 1 portable power station"></div>
+        <div class="product-img"><img src="assets/img/gear/friend-generator.jpg" alt="Oupes Mega 1 portable power station" loading="lazy"></div>
         <span class="badge friend">Friend's setup</span>
         <h4>Oupes Mega 1 + Extra Battery</h4>
         <p>A friend pairs this with an extra battery pack and a soft-start and runs his whole 30-amp RV hours without touching his generator. Bundle includes solar panels.</p>
         <a class="btn btn-primary" href="https://link.amazon/B06zsB4od" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
       <article class="product">
-         <div class="product-img"><img src="assets/img/gear/power.jpg" alt="Oupes Mega 1 portable power station"></div>
+         <div class="product-img"><img src="assets/img/gear/power.jpg" alt="Oupes Mega 1 portable power station" loading="lazy"></div>
         <span class="badge wish">On our wishlist</span>
         <h4>Oupes Guardian</h4>
         <p>The big unit for serious off-grid capability or long outages. We're saving up — consider this our future upgrade.</p>
         <a class="btn btn-primary" href="https://link.amazon/B0aYKbnxA" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
       <article class="product">
-         <div class="product-img"><img src="assets/img/gear/softstart.jpg" alt="Oupes Mega 1 portable power station"></div>
+         <div class="product-img"><img src="assets/img/gear/softstart.jpg" alt="Oupes Mega 1 portable power station" loading="lazy"></div>
         <h4>Soft-Start Adapter</h4>
         <p>AC compressors pull a startup surge of 3–4× their running watts. A soft-start cuts that surge so a smaller power station can run your air conditioner.</p>
         <a class="btn btn-primary" href="https://amzn.to/4xzvErZ" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
       <article class="product">
-         <div class="product-img"><img src="assets/img/gear/panels.jpg" alt="Oupes Mega 1 portable power station"></div>
+         <div class="product-img"><img src="assets/img/gear/panels.jpg" alt="Oupes Mega 1 portable power station" loading="lazy"></div>
         <h4>Renogy 200W Solar Panel</h4>
         <p>Monocrystalline, pre-drilled, weatherproof junction box. Stack a few for real daily charging on Southern summer days.</p>
         <a class="btn btn-primary" href="https://amzn.to/4eNiK2m" target="_blank" rel="sponsored nofollow noopener">Check price</a>
@@ -109,14 +90,14 @@
       <article class="product">
         <h4>Renogy 40A MPPT Controller</h4>
         <p>MPPT pulls noticeably more out of your panels than PWM. If you're buying panels, buy the controller that uses them well.</p>
-        <a class="btn btn-primary" href="https://link.amazon/B05rZRvIt target="_blank" rel="sponsored nofollow noopener">Check price</a>
+        <a class="btn btn-primary" href="https://link.amazon/B05rZRvIt" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
     </div>
 
     <h2 id="water">💧 Water</h2>
     <div class="product-grid">
       <article class="product">
-         <div class="product-img"><img src="assets/img/gear/berky.jpg" alt="Oupes Mega 1 portable power station"></div>
+         <div class="product-img"><img src="assets/img/gear/berky.jpg" alt="Oupes Mega 1 portable power station" loading="lazy"></div>
         <span class="badge">We own it</span>
         <h4>Big Berkey 2.25 Gal (BB9-2)</h4>
         <p>Our primary drinking water at home and on longer trips. Gravity-fed stainless — no power, no plastic contact.</p>
@@ -142,6 +123,17 @@
         <h4>Collapsible Water Containers</h4>
         <p>Extra storage before a storm or a remote trip. Look for food-grade, BPA- and phthalate-free.</p>
         <a class="btn btn-primary" href="https://amzn.to/4a7Y2Yt" target="_blank" rel="sponsored nofollow noopener">Check price</a>
+      </article>
+    </div>
+
+    <h2 id="towing">🚚 Towing & Suspension</h2>
+    <div class="product-grid">
+      <article class="product">
+        <div class="product-img"><img src="assets/img/gear/truck-airbags.jpg" alt="Air bag suspension kit installed on truck" loading="lazy"></div>
+        <span class="badge">Installed & Tested</span>
+        <h4>Heavy-Duty Air Bag Suspension Kit</h4>
+        <p>Absolute game-changer for heavy pin weights. Levels out the truck, eliminates rear sag when towing the 5th wheel, and keeps the ride smooth on rough highway stretches.</p>
+        <a class="btn btn-primary" href="https://link.amazon/B05Ot7Ivw" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
     </div>
 
@@ -189,47 +181,10 @@
 
 </main>
 
-<!-- ============ FOOTER (same on every page) ============ -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">Wandering Willow RV</div>
-        <p>Part-time wanderers. Full-time family. Real advice from a family that camps with a toddler, dogs, and a fully packed truck.</p>
-        <div class="socials">
-          <!-- Replace # with your profile links -->
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3Z"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.8V9.4a6.3 6.3 0 1 0 5.4 6.3V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2Z"/></svg></a>
-        </div>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="stories.html">Stories</a></li>
-          <li><a href="checklist.html">Packing Checklist</a></li>
-          <li><a href="gear.html">Our Gear</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>The fine print</h4>
-        <ul>
-          <li><a href="disclosure.html">Affiliate disclosure</a></li>
-          <li><a href="privacy.html">Privacy policy</a></li>
-        </ul>
-        <p style="margin-top:14px;font-size:.85rem">As an Amazon Associate we earn from qualifying purchases.</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span data-year>2026</span> Wandering Willow RV</span>
-      <span>Made in Alabama 🐾</span>
-    </div>
-  </div>
-</footer>
+<!-- ============ FOOTER ============ -->
+<div id="global-footer"></div>
 
-<script src="assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=update"></script>
 </body>
 </html>
+```[cite: 12]
