@@ -117,5 +117,6 @@ In the footer of each page, replace the `href="#"` on the YouTube / Instagram / 
 
 ## After launch
 - **Google Search Console** (search.google.com/search-console): add the domain, submit `https://www.wanderingwillowrv.com/sitemap.xml`.
+- 
 - **Amazon Associates**: add `https://www.wanderingwillowrv.com` to your Associates account website list.
 - **Analytics** (optional): GoatCounter or Plausible are privacy-friendly; Google Analytics is free. Update `privacy.html` when you add one.
