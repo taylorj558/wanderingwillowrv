@@ -33,17 +33,21 @@
       .nav-links a { text-align: center; display: block; }
       .nav-links.show { display: flex !important; }
     }
-    /* Uncrop the Story Hero Image */
-    .article-cover {
-      height: auto !important; 
-      max-height: none !important;
-    }
-    .article-cover img {
-      height: auto !important;
-      max-height: none !important;
-      object-fit: contain !important;
-      width: 100%;
-    }
+/* Uncrop the Story Hero Image */
+.article-cover {
+  height: auto !important; 
+  max-height: none !important;
+  overflow: visible !important; /* Ensures the container doesn't hide content */
+  padding-bottom: 20px; /* Adds a little breathing room below the image */
+}
+
+.article-cover img {
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  width: 100%;
+  display: block; /* Removes any default inline-block spacing issues */
+}
   </style>
 </head>
 <body>
