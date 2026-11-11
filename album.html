@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adventures Album | Wandering Willow RV</title>
   
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  
   <!-- Standard Fonts + 'Caveat' for Handwritten Scrapbook Captions -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,47 +15,17 @@
   
   <style>
     /* ----------------------------------------------------
-       GLOBAL & BRANDING
-       ---------------------------------------------------- */
-    :root {
-      --primary: #1F362B; /* Pine Green */
-      --secondary: #E39028; /* Warm Amber */
-      --bg: #F4F6F4; /* Cream */
-      --text: #222222;
-      --border: #E0E4E0;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; display: flex; flex-direction: column; min-height: 100vh; }
-    main { flex: 1; display: flex; flex-direction: column; }
-
-    /* Site Header */
-    .site-header { background: #F4F6F4; padding: 15px 20px; border-bottom: 1px solid var(--border); }
-    .header-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-    .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-size: 1.4rem; font-family: Georgia, serif; }
-    .logo-circle { background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: Georgia, serif; font-size: 1.1rem; }
-    .menu-toggle { display: none; background: none; border: none; color: var(--primary); font-size: 1.8rem; cursor: pointer; padding: 5px 10px; }
-    .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; margin: 0; padding: 0; }
-    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 8px 18px; border-radius: 20px; transition: all 0.2s ease; }
-    .nav-links a.active, .nav-links a:hover { background: var(--primary); color: white; }
-    @media (max-width: 800px) {
-      .menu-toggle { display: block; }
-      .nav-links { display: none; width: 100%; flex-direction: column; gap: 10px; padding-top: 15px; }
-      .nav-links a { text-align: center; display: block; }
-      .nav-links.show { display: flex !important; }
-    }
-
-    /* ----------------------------------------------------
        SCRAPBOOK ALBUM LAYOUT
        ---------------------------------------------------- */
     .album-header { text-align: center; padding: 50px 20px 20px; }
-    .album-header h1 { font-family: Georgia, serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+    .album-header h1 { font-family: Georgia, serif; font-size: 2.5rem; color: #1F362B; margin-bottom: 10px; }
     .album-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
     .album-container { max-width: 1100px; margin: 0 auto; padding: 20px; width: 100%; }
     
     /* Trip Grouping styling */
     .trip-group { margin-bottom: 60px; }
-    .trip-title { font-family: 'Caveat', cursive; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; border-bottom: 2px dashed #C8D0C8; padding-bottom: 10px; display: inline-block; }
+    .trip-title { font-family: 'Caveat', cursive; font-size: 2.5rem; color: #1F362B; margin-bottom: 20px; border-bottom: 2px dashed #C8D0C8; padding-bottom: 10px; display: inline-block; }
 
     /* The Masonry Grid */
     .scrapbook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; align-items: start; }
@@ -70,36 +43,17 @@
     /* Masking Tape Effect */
     .tape { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 100px; height: 30px; background: rgba(235, 228, 205, 0.85); box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 2; border-radius: 2px; opacity: 0.9; }
 
-    /* Auto-tilt effect to make it look messy. Evens tilt right, Odds tilt left */
+    /* Auto-tilt effect */
     .scrapbook-grid .polaroid:nth-child(even) { transform: rotate(3deg); }
     .scrapbook-grid .polaroid:nth-child(odd) { transform: rotate(-2deg); }
     .scrapbook-grid .polaroid:nth-child(3n) { transform: rotate(1deg); }
     .scrapbook-grid .polaroid:nth-child(even) .tape { transform: translateX(-50%) rotate(4deg); }
-
-    /* ----------------------------------------------------
-       SITE FOOTER (Standardized)
-       ---------------------------------------------------- */
-    .site-footer { background: var(--primary); color: #E2E0D8; padding: 40px 20px 20px; margin-top: 40px; border-top: 4px solid var(--secondary); font-size: 0.95rem; }
-    .site-footer .wrap { max-width: 1000px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
-    .footer-brand { font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 12px; font-family: Georgia, serif; }
-    .site-footer p { color: #A8B8B0; line-height: 1.5; margin-bottom: 15px; }
-    .site-footer h4 { color: white; margin-bottom: 15px; font-size: 1.1rem; }
-    .site-footer ul { list-style: none; padding: 0; margin: 0; }
-    .site-footer ul li { margin-bottom: 10px; }
-    .site-footer ul a { color: #E2E0D8; text-decoration: none; transition: color 0.2s; }
-    .site-footer ul a:hover { color: var(--secondary); }
-    .socials { display: flex; gap: 15px; margin-top: 15px; }
-    .socials a { color: #A8B8B0; display: inline-block; width: 24px; height: 24px; transition: color 0.2s; }
-    .socials a:hover { color: var(--secondary); }
-    .socials svg { fill: currentColor; width: 100%; height: 100%; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: #A8B8B0; }
   </style>
 </head>
 <body>
 
-  <!-- Site Header -->
- <div id="global-header"></div>
+  <!-- Global Header Placeholder -->
+  <div id="global-header"></div>
 
   <main>
     <div class="album-header">
@@ -109,62 +63,53 @@
 
     <div class="album-container">
 
-    <!-- ==============================================
+      <!-- ==============================================
            TRIP GROUP 1: Splash RV Resort
            ============================================== -->
       <section class="trip-group">
         <h2 class="trip-title">Splash RV Resort Adventures</h2>
         
         <div class="scrapbook-grid">
-          
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-rockwood-morning.jpg" alt="Rockwood camper morning">
+            <img src="assets/img/stories/splash-rockwood-morning.jpg" alt="Rockwood camper morning" loading="lazy">
             <div class="caption">Morning sun on the Rockwood</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-rockwood-camp.jpg" alt="Rockwood camp setup">
+            <img src="assets/img/stories/splash-rockwood-camp.jpg" alt="Rockwood camp setup" loading="lazy">
             <div class="caption">The perfect patio setup</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-griddle-prep.jpg" alt="Camp griddle prep">
+            <img src="assets/img/stories/splash-griddle-prep.jpg" alt="Camp griddle prep" loading="lazy">
             <div class="caption">Getting the Blackstone ready</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-bacon-griddle.jpg" alt="Bacon on the griddle">
+            <img src="assets/img/stories/splash-bacon-griddle.jpg" alt="Bacon on the griddle" loading="lazy">
             <div class="caption">Camp breakfast is the best breakfast</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-poolside.jpg" alt="Relaxing by the pool">
+            <img src="assets/img/stories/splash-poolside.jpg" alt="Relaxing by the pool" loading="lazy">
             <div class="caption">Poolside views</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-scooter.jpg" alt="Electric scooter">
+            <img src="assets/img/stories/splash-scooter.jpg" alt="Electric scooter" loading="lazy">
             <div class="caption">Our resort ride</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-sabre-rig.jpg" alt="Sabre fifth wheel">
+            <img src="assets/img/stories/splash-sabre-rig.jpg" alt="Sabre fifth wheel" loading="lazy">
             <div class="caption">The Sabre looking good!</div>
           </div>
-
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/splash-camp-dinner.jpg" alt="Camp dinner plate">
+            <img src="assets/img/stories/splash-camp-dinner.jpg" alt="Camp dinner plate" loading="lazy">
             <div class="caption">Dinner done right</div>
           </div>
-
         </div>
       </section>
 
@@ -175,31 +120,26 @@
         <h2 class="trip-title">11 Days Off-Grid</h2>
         
         <div class="scrapbook-grid">
-          
-          <!-- Polaroid Photo 1 -->
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/hurricane-michael-1.jpg" alt="Front field camp">
+            <img src="assets/img/stories/hurricane-michael-1.jpg" alt="Front field camp" loading="lazy">
             <div class="caption">Holding down the fort</div>
           </div>
-
-          <!-- Polaroid Photo 2 -->
           <div class="polaroid">
             <div class="tape"></div>
-            <img src="assets/img/stories/off-grid-gear.jpg" alt="Gear layout">
+            <img src="assets/img/stories/off-grid-gear.jpg" alt="Gear layout" loading="lazy">
             <div class="caption">The gear that saved us</div>
           </div>
-
         </div>
       </section>
 
     </div>
   </main>
 
-  <!-- Site Footer -->
-<div id="global-footer"></div>
+  <!-- Global Footer Placeholder -->
+  <div id="global-footer"></div>
 
-  <!-- Mobile Menu Logic -->
-<script src="/assets/js/main.js?v=update"></script>
+  <!-- Central JS Script -->
+  <script src="/assets/js/main.js?v=update"></script>
 </body>
 </html>
