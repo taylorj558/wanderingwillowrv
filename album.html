@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventures Album | Wandering Willow RV</title>
+  
+  <!-- Standard Fonts + 'Caveat' for Handwritten Scrapbook Captions -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Georgia&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ----------------------------------------------------
+       GLOBAL & BRANDING
+       ---------------------------------------------------- */
+    :root {
+      --primary: #1F362B; /* Pine Green */
+      --secondary: #E39028; /* Warm Amber */
+      --bg: #F4F6F4; /* Cream */
+      --text: #222222;
+      --border: #E0E4E0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; display: flex; flex-direction: column; min-height: 100vh; }
+    main { flex: 1; display: flex; flex-direction: column; }
+
+    /* Site Header */
+    .site-header { background: #F4F6F4; padding: 15px 20px; border-bottom: 1px solid var(--border); }
+    .header-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    .brand-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-size: 1.4rem; font-family: Georgia, serif; }
+    .logo-circle { background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: Georgia, serif; font-size: 1.1rem; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--primary); font-size: 1.8rem; cursor: pointer; padding: 5px 10px; }
+    .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; margin: 0; padding: 0; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500; padding: 8px 18px; border-radius: 20px; transition: all 0.2s ease; }
+    .nav-links a.active, .nav-links a:hover { background: var(--primary); color: white; }
+    @media (max-width: 800px) {
+      .menu-toggle { display: block; }
+      .nav-links { display: none; width: 100%; flex-direction: column; gap: 10px; padding-top: 15px; }
+      .nav-links a { text-align: center; display: block; }
+      .nav-links.show { display: flex !important; }
+    }
+
+    /* ----------------------------------------------------
+       SCRAPBOOK ALBUM LAYOUT
+       ---------------------------------------------------- */
+    .album-header { text-align: center; padding: 50px 20px 20px; }
+    .album-header h1 { font-family: Georgia, serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 10px; }
+    .album-header p { color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+    .album-container { max-width: 1100px; margin: 0 auto; padding: 20px; width: 100%; }
+    
+    /* Trip Grouping styling */
+    .trip-group { margin-bottom: 60px; }
+    .trip-title { font-family: 'Caveat', cursive; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; border-bottom: 2px dashed #C8D0C8; padding-bottom: 10px; display: inline-block; }
+
+    /* The Masonry Grid */
+    .scrapbook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; align-items: start; }
+
+    /* The Polaroid Card */
+    .polaroid { background: white; padding: 15px 15px 30px 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border-radius: 2px; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .polaroid:hover { transform: scale(1.05) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 10; }
+    
+    /* Image inside Polaroid */
+    .polaroid img { width: 100%; height: 250px; object-fit: cover; background: #EEE; border: 1px solid #EAEAEA; }
+    
+    /* Handwritten Caption */
+    .polaroid .caption { font-family: 'Caveat', cursive; font-size: 1.8rem; text-align: center; color: #333; margin-top: 15px; line-height: 1.1; }
+
+    /* Masking Tape Effect */
+    .tape { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) rotate(-3deg); width: 100px; height: 30px; background: rgba(235, 228, 205, 0.85); box-shadow: 0 1px 3px rgba(0,0,0,0.1); z-index: 2; border-radius: 2px; opacity: 0.9; }
+
+    /* Auto-tilt effect to make it look messy. Evens tilt right, Odds tilt left */
+    .scrapbook-grid .polaroid:nth-child(even) { transform: rotate(3deg); }
+    .scrapbook-grid .polaroid:nth-child(odd) { transform: rotate(-2deg); }
+    .scrapbook-grid .polaroid:nth-child(3n) { transform: rotate(1deg); }
+    .scrapbook-grid .polaroid:nth-child(even) .tape { transform: translateX(-50%) rotate(4deg); }
+
+    /* ----------------------------------------------------
+       SITE FOOTER (Standardized)
+       ---------------------------------------------------- */
+    .site-footer { background: var(--primary); color: #E2E0D8; padding: 40px 20px 20px; margin-top: 40px; border-top: 4px solid var(--secondary); font-size: 0.95rem; }
+    .site-footer .wrap { max-width: 1000px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
+    .footer-brand { font-size: 1.3rem; font-weight: bold; color: white; margin-bottom: 12px; font-family: Georgia, serif; }
+    .site-footer p { color: #A8B8B0; line-height: 1.5; margin-bottom: 15px; }
+    .site-footer h4 { color: white; margin-bottom: 15px; font-size: 1.1rem; }
+    .site-footer ul { list-style: none; padding: 0; margin: 0; }
+    .site-footer ul li { margin-bottom: 10px; }
+    .site-footer ul a { color: #E2E0D8; text-decoration: none; transition: color 0.2s; }
+    .site-footer ul a:hover { color: var(--secondary); }
+    .socials { display: flex; gap: 15px; margin-top: 15px; }
+    .socials a { color: #A8B8B0; display: inline-block; width: 24px; height: 24px; transition: color 0.2s; }
+    .socials a:hover { color: var(--secondary); }
+    .socials svg { fill: currentColor; width: 100%; height: 100%; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.85rem; color: #A8B8B0; }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-circle">W</div>
+        Wandering Willow
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open Navigation">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="stories.html">Stories</a></li>
+        <!-- Album link placed alongside stories -->
+        <li><a href="album.html" class="active">Album</a></li>
+        <li><a href="checklist.html">Packing Checklist</a></li>
+        <li><a href="gear.html">Our Gear</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <div class="album-header">
+      <h1>Adventures & Memories</h1>
+      <p>A digital scrapbook of our favorite stops, off-grid setups, and moments on the road.</p>
+    </div>
+
+    <div class="album-container">
+
+      <!-- ==============================================
+           TRIP GROUP 1: Splash RV Resort
+           ============================================== -->
+      <section class="trip-group">
+        <h2 class="trip-title">Splash RV Resort — July 2026</h2>
+        
+        <div class="scrapbook-grid">
+          
+          <!-- Polaroid Photo 1 -->
+          <div class="polaroid">
+            <div class="tape"></div>
+            <!-- Update the src="" with your actual image links -->
+            <img src="assets/img/stories/splash1.jpg" alt="Splash RV Setup">
+            <div class="caption">Setup at site 42!</div>
+          </div>
+
+          <!-- Polaroid Photo 2 -->
+          <div class="polaroid">
+            <div class="tape"></div>
+            <img src="assets/img/stories/splash2.jpg" alt="Willow on lap">
+            <div class="caption">Willow watching fireworks 🐾</div>
+          </div>
+
+          <!-- Polaroid Photo 3 -->
+          <div class="polaroid">
+            <div class="tape"></div>
+            <img src="assets/img/stories/splash3.jpg" alt="Family Cookout">
+            <div class="caption">Cookout with the fam</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           TRIP GROUP 2: The Front Field / Off-Grid
+           ============================================== -->
+      <section class="trip-group">
+        <h2 class="trip-title">11 Days Off-Grid</h2>
+        
+        <div class="scrapbook-grid">
+          
+          <!-- Polaroid Photo 1 -->
+          <div class="polaroid">
+            <div class="tape"></div>
+            <img src="assets/img/stories/hurricane-michael-1.jpg" alt="Front field camp">
+            <div class="caption">Holding down the fort</div>
+          </div>
+
+          <!-- Polaroid Photo 2 -->
+          <div class="polaroid">
+            <div class="tape"></div>
+            <img src="assets/img/stories/off-grid-gear.jpg" alt="Gear layout">
+            <div class="caption">The gear that saved us</div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Wandering Willow RV</div>
+          <p>Part-time wanderers. Full-time family. Real advice from a family that camps with a toddler, dogs, and a fully packed truck.</p>
+          <div class="socials">
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.4-1.6.5-4.8.5-4.8s0-3.2-.5-4.8ZM9.7 15V9l5.8 3-5.8 3Z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 3.9 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1Zm0 4.9a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8Zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4Zm5.1-9.4a1.2 1.2 0 1 0 0 2.3 1.2 1.2 0 0 0 0-2.3Z"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.5 3.5h-2.9v8.4A12 12 0 0 0 24 12Z"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.8V9.4a6.3 6.3 0 1 0 5.4 6.3V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2Z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="stories.html">Stories</a></li>
+            <li><a href="checklist.html">RV Packing Checklist</a></li>
+            <li><a href="gear.html">Our Gear</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>The fine print</h4>
+          <ul>
+            <li><a href="disclosure.html">Affiliate disclosure</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+          <p style="margin-top:14px;font-size:.85rem">As an Amazon Associate we earn from qualifying purchases.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> Wandering Willow RV</span>
+        <span>Made in Alabama 🐾</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const toggleBtn = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (toggleBtn && navLinks) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          navLinks.classList.toggle('show');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
