@@ -7,7 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
   loadPart("global-footer", "/components/footer.html", setupFooter);
   setupImageFallbacks();
   setupStoryFilters();
+  setupPinterestSave();
 });
+
+// Pinterest "Save" button that appears when you hover over a photo.
+// Uses Pinterest's own pinit.js; the pin links back to the page it came from.
+// Add data-pin-nopin to any <img> that shouldn't get the button.
+function setupPinterestSave() {
+  if (window.location.pathname.startsWith("/pins")) return; // that page has its own pin tools
+  if (document.querySelector('script[src*="assets.pinterest.com/js/pinit"]')) return;
+  // Pinterest uses the alt text as the pin description; fall back to the page title.
+  document.querySelectorAll("img").forEach((img) => {
+    if (!img.getAttribute("data-pin-description") && !img.alt) img.setAttribute("data-pin-description", document.title);
+  });
+  const s = document.createElement("script");
+  s.async = true;
+  s.defer = true;
+  s.src = "https://assets.pinterest.com/js/pinit.js";
+  s.setAttribute("data-pin-hover", "true");
+  s.setAttribute("data-pin-tall", "true");
+  document.body.appendChild(s);
+}
 
 // Fetch a component and swap it in place of its placeholder <div>.
 // (Replacing the div, rather than filling it, keeps the header "sticky" while scrolling.)
