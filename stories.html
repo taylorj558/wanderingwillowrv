@@ -16,6 +16,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .place-cta { display: inline-block; margin-top: 12px; font-weight: 600; font-size: .92rem; color: var(--ember-dark); }
+    .place-card:hover .place-cta { color: var(--ember); }
+  </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -51,6 +55,19 @@
         4. Newest stories go at the top.
       -->
 
+      <article class="card" data-category="family gear">
+        <div class="card-media">
+          <img src="assets/img/album/hidden-hollow-11-pioneer-hitched.jpg" alt="Our truck hitched to the camper, packed and ready to go">
+          <span class="fallback">🎒</span>
+        </div>
+        <div class="card-body">
+          <span class="tag green">Packing</span>
+          <h3><a href="stories/what-we-pack.html">What We Pack Every Single Trip (Toddler + Dogs Edition)</a></h3>
+          <p>Our stays-in-the-rig system, the camp kitchen, the toddler bag, the dog bag, and the air fryer we can't camp without.</p>
+          <div class="card-meta"><span>🎒 Packing list</span><span>8 min read</span></div>
+        </div>
+      </article>
+
       <article class="card" data-category="trips campgrounds family">
         <div class="card-media">
           <span class="willow-score">🐾 Willow Score 5/5</span>
@@ -78,14 +95,7 @@
         </div>
       </article>
 
-      <article class="card card-soon" data-category="family gear">
-        <div class="card-media"><span class="fallback">🎒</span></div>
-        <div class="card-body">
-          <span class="tag blue">Coming soon</span>
-          <h3>What We Pack Every Single Trip (Toddler + Dogs Edition)</h3>
-          <p>From snacks to sanity-savers — the full packing list, every product linked.</p>
-        </div>
-      </article>
+
 
       <article class="card card-soon" data-category="trips">
         <div class="card-media"><span class="fallback">🗺️</span></div>
@@ -110,18 +120,76 @@
       </div>
     </div>
     <div class="grid">
-      <!-- Copy this card for each campground. Link to a full story if one exists, otherwise leave the link off. -->
-      <article class="card" data-category="campgrounds">
+      <!-- Copy a card for each campground. Link to the full story if there is one,
+           otherwise to its album stack (album.html#trip-id opens that stack). -->
+      <article class="card place-card" data-category="campgrounds">
+        <div class="card-media">
+          <img src="assets/img/album/margaritaville-02-sabre-under-cover.jpg" alt="Our Sabre parked at a covered RV site" loading="lazy">
+          <span class="fallback">🏕️</span>
+        </div>
+        <div class="card-body">
+          <span class="tag green">Louisiana</span>
+          <h3><a href="album.html#margaritaville">Margaritaville RV Resort</a></h3>
+          <p><strong>Best for:</strong> families who want a pool, splash tower, and kids' park in one place.<br><strong>Site tip:</strong> covered sites mean shade all day, plus a fire pit and grill at each site.<br><strong>Rig fit:</strong> our 36′ Sabre, no problem.</p>
+          <div class="card-meta"><span>📍 Louisiana</span><span>Covered sites</span><span>Dog park</span></div>
+          <span class="place-cta">See 16 photos →</span>
+        </div>
+      </article>
+
+      <article class="card place-card" data-category="campgrounds">
+        <div class="card-media">
+          <img src="assets/img/album/monte-sano-07-city-lights-table.jpg" alt="Our campsite at night with Huntsville city lights through the trees" loading="lazy">
+          <span class="fallback">🏕️</span>
+        </div>
+        <div class="card-body">
+          <span class="tag green">Alabama</span>
+          <h3><a href="album.html#monte-sano">Monte Sano State Park</a></h3>
+          <p><strong>Best for:</strong> a quiet wooded weekend with a trip to the Space &amp; Rocket Center.<br><strong>Site tip:</strong> grab a site on the edge for city-light views at night.<br><strong>Rig fit:</strong> our Rockwood travel trailer.</p>
+          <div class="card-meta"><span>📍 Huntsville, AL</span><span>Wooded sites</span><span>Glamping tents</span></div>
+          <span class="place-cta">See 13 photos →</span>
+        </div>
+      </article>
+
+      <article class="card place-card" data-category="campgrounds">
+        <div class="card-media">
+          <img src="assets/img/album/hidden-hollow-07-pull-through.jpg" alt="Long concrete RV pad with full hookups at Hidden Hollow" loading="lazy">
+          <span class="fallback">🏕️</span>
+        </div>
+        <div class="card-body">
+          <span class="tag green">Alabama</span>
+          <h3><a href="album.html#hidden-hollow">Hidden Hollow RV Park</a></h3>
+          <p><strong>Best for:</strong> an easy overnight to break up the drive to Florida.<br><strong>Site tip:</strong> long concrete pads make it an easy in-and-out stop.<br><strong>Rig fit:</strong> our Pioneer travel trailer.</p>
+          <div class="card-meta"><span>📍 Dothan, AL</span><span>Full hookups</span><span>Dog park</span></div>
+          <span class="place-cta">See 11 photos →</span>
+        </div>
+      </article>
+
+      <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
           <span class="willow-score">🐾 5/5</span>
-          <img src="assets/img/campgrounds/splash.jpg" alt="Splash RV Resort pool and lazy river">
-          <span class="fallback">🏊</span>
+          <img src="assets/img/stories/splash-poolside.jpg" alt="Pool at Splash RV Resort" loading="lazy">
+          <span class="fallback">🏕️</span>
         </div>
         <div class="card-body">
           <span class="tag green">Florida</span>
           <h3><a href="stories/july-4th-splash-rv-resort.html">Splash RV Resort</a></h3>
           <p><strong>Best for:</strong> big family groups and holiday weekends.<br><strong>Site tip:</strong> call ahead to get group sites together.<br><strong>Rig fit:</strong> 36′ 5th wheel, no problem.</p>
           <div class="card-meta"><span>📍 Milton, FL</span><span>50-amp</span><span>Dog park</span></div>
+          <span class="place-cta">Read the story →</span>
+        </div>
+      </article>
+
+      <article class="card place-card" data-category="campgrounds">
+        <div class="card-media">
+          <img src="assets/img/album/cheaha-01-misty-overlook.jpg" alt="Misty valley view from the Cheaha overlook" loading="lazy">
+          <span class="fallback">🏕️</span>
+        </div>
+        <div class="card-body">
+          <span class="tag green">Alabama</span>
+          <h3><a href="album.html#cheaha">Cheaha State Park</a></h3>
+          <p><strong>Best for:</strong> mountain views at the highest point in Alabama.<br><strong>Site tip:</strong> catch the overlook early when the fog is still sitting in the valley.<br><strong>Rig fit:</strong> our Pioneer travel trailer, on a wooded gravel site.</p>
+          <div class="card-meta"><span>📍 Alabama</span><span>Overlooks</span><span>Wooded sites</span></div>
+          <span class="place-cta">See 14 photos →</span>
         </div>
       </article>
 

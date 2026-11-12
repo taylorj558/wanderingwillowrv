@@ -132,6 +132,8 @@
   2. Copy one <article class="trip"> ... </article> block and paste it where you
      want it in the grid (newest trips at the top).
   3. Set data-title (shown in handwriting) and data-meta (place / date).
+     Give it a short id too (id="gulf-state-park") so other pages can
+     link straight to it: album.html#gulf-state-park
   4. One <a> line per photo:
         href          = the photo file
         data-caption  = the handwritten caption in the viewer
@@ -140,7 +142,7 @@
   =============================================================
 -->
 
-        <article class="trip" data-title="Margaritaville Resort" data-meta="Louisiana">
+        <article class="trip" id="margaritaville" data-title="Margaritaville Resort" data-meta="Louisiana">
           <div class="trip-photos">
             <a href="assets/img/album/margaritaville-12-poolside-sunset.jpg" data-caption="Feet up, sun down">Feet up on a lounge chair by the pool at sunset</a>
             <a href="assets/img/album/margaritaville-01-rolling-in.jpg" data-caption="Pulling in!">Our Sabre and Ram pulling in under the covered check-in area</a>
@@ -161,7 +163,7 @@
           </div>
         </article>
 
-        <article class="trip" data-title="Monte Sano State Park" data-meta="Huntsville, AL · February">
+        <article class="trip" id="monte-sano" data-title="Monte Sano State Park" data-meta="Huntsville, AL · February">
           <div class="trip-photos">
             <a href="assets/img/album/monte-sano-01-glamping-tent.jpg" data-caption="Glowing in the fog">Glamping tent lit with string lights in the foggy winter woods</a>
             <a href="assets/img/album/monte-sano-02-saturn-v.jpg" data-caption="Rocket City!">The Saturn V rocket at the U.S. Space &amp; Rocket Center from the highway</a>
@@ -179,7 +181,7 @@
           </div>
         </article>
 
-        <article class="trip" data-title="Hidden Hollow RV Park" data-meta="Dothan, AL · our stop on the way to Florida">
+        <article class="trip" id="hidden-hollow" data-title="Hidden Hollow RV Park" data-meta="Dothan, AL · our stop on the way to Florida">
           <div class="trip-photos">
             <a href="assets/img/album/hidden-hollow-01-sign.jpg" data-caption="Our halfway stop">Hidden Hollow RV Park sign lit up at night</a>
             <a href="assets/img/album/hidden-hollow-11-pioneer-hitched.jpg" data-caption="Hitched and ready">Our Ram towing the Pioneer travel trailer</a>
@@ -195,7 +197,7 @@
           </div>
         </article>
 
-        <article class="trip" data-title="Splash RV Resort" data-meta="Milton, FL · July 4th">
+        <article class="trip" id="splash" data-title="Splash RV Resort" data-meta="Milton, FL · July 4th">
           <div class="trip-photos">
             <a href="assets/img/stories/splash-sabre-rig.jpg" data-caption="The Sabre looking good!">Sabre fifth wheel at Splash RV Resort</a>
             <a href="assets/img/stories/splash-rockwood-morning.jpg" data-caption="Morning sun on the Rockwood">Rockwood camper in the morning</a>
@@ -208,7 +210,7 @@
           </div>
         </article>
 
-        <article class="trip" data-title="Cheaha State Park" data-meta="Alabama · 2021">
+        <article class="trip" id="cheaha" data-title="Cheaha State Park" data-meta="Alabama · 2021">
           <div class="trip-photos">
             <a href="assets/img/album/cheaha-01-misty-overlook.jpg" data-caption="Top of Alabama">Misty valley view from the Cheaha overlook path</a>
             <a href="assets/img/album/cheaha-02-through-town.jpg" data-caption="Through town">Our Ram towing the Pioneer through an intersection</a>
@@ -227,7 +229,7 @@
           </div>
         </article>
 
-        <article class="trip" data-title="11 Days Off-Grid" data-meta="Hurricane Michael · 2018">
+        <article class="trip" id="off-grid" data-title="11 Days Off-Grid" data-meta="Hurricane Michael · 2018">
           <div class="trip-photos">
             <a href="assets/img/stories/hurricane-michael-1.jpg" data-caption="Holding down the fort">Our camper set up in the front field after the storm</a>
             <a href="assets/img/stories/off-grid-gear.jpg" data-caption="The gear that saved us">Our off-grid gear laid out</a>
@@ -365,6 +367,19 @@
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
+
+    // Open a stack straight from a link like album.html#monte-sano
+    function openFromHash() {
+      var id = decodeURIComponent(location.hash.slice(1));
+      var trip = id && document.getElementById(id);
+      if (trip && trip.classList.contains("trip")) {
+        lastStack = trip.querySelector(".stack");
+        trip.scrollIntoView({ block: "center" });
+        openTrip(trip, 0);
+      }
+    }
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
 
     // Swipe on phones
     var startX = null;
