@@ -19,4 +19,15 @@
   <figure><img src="assets/img/pins/pin-rv-dog-packing.jpg" alt="rv dog packing" width="500" height="750"><figcaption>pin-rv-dog-packing.jpg</figcaption></figure>
   <figure><img src="assets/img/pins/pin-storm-power-gear.jpg" alt="storm power gear" width="500" height="750"><figcaption>pin-storm-power-gear.jpg</figcaption></figure>
   <figure><img src="assets/img/pins/pin-what-we-pack.jpg" alt="what we pack" width="500" height="750"><figcaption>pin-what-we-pack.jpg</figcaption></figure>
-</div></body></html>
+</div><script>
+// Helper: lets the site owner's Pinterest tab request these public pin images.
+window.addEventListener('message', async (e) => {
+  if (e.origin !== 'https://www.pinterest.com') return;
+  const f = String(e.data && e.data.file || '');
+  if (!/^pin-[a-z0-9-]+\.jpg$/.test(f)) return;
+  const buf = await (await fetch('assets/img/pins/' + f)).arrayBuffer();
+  e.source.postMessage({ file: f, buf: buf }, e.origin, [buf]);
+});
+if (window.opener) window.opener.postMessage({ ready: true }, 'https://www.pinterest.com');
+</script>
+</body></html>
