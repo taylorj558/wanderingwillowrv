@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Two-Week RV Meal Plan (Toddler-Approved, Free Printable) | Wandering Willow RV</title>
+  <meta name="description" content="A 14-day RV and camping meal plan for families with little kids: easy griddle breakfasts, cooler lunches, and fire pit, air fryer and big-pot dinners, plus a free printable and a prep-at-home list.">
+  <link rel="canonical" href="https://www.wanderingwillowrv.com/stories/rv-meal-plan.html">
+  <meta property="og:title" content="Our Two-Week RV Meal Plan (Toddler-Approved, Free Printable)">
+  <meta property="og:description" content="14 days of easy campsite meals for the griddle, the air fryer, and the fire pit, with a free printable.">
+  <meta property="og:image" content="https://www.wanderingwillowrv.com/assets/img/stories/splash-bacon-griddle.jpg">
+  <meta property="og:type" content="article">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .plan { margin: 1.4rem 0 2rem; }
+    .plan h3 { margin: 1.6rem 0 .8rem; }
+    .day-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 12px; }
+    .day { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; break-inside: avoid; }
+    .day .day-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 8px; }
+    .day .day-num { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; color: var(--forest-deep); }
+    .day .day-note { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--ember); font-weight: 600; }
+    .day dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: .93rem; }
+    .day dt { color: var(--ink-soft); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; padding-top: 2px; }
+    .day dd { margin: 0; }
+    .gear-key { font-size: .85rem; color: var(--ink-soft); margin: -.4rem 0 1rem; }
+    .print-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 1rem 0 0; }
+    .pack-list { list-style: none; padding: 0; margin: 1.2rem 0 1.6rem; display: grid; gap: 8px; }
+    .pack-list li { position: relative; padding: 10px 14px 10px 44px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); }
+    .pack-list li::before { content: ""; position: absolute; left: 14px; top: 13px; width: 18px; height: 18px; border: 2px solid var(--willow); border-radius: 5px; }
+    .print-only { display: none; }
+
+    /* ---- Printable version: just the plan, two pages ---- */
+    @media print {
+      @page { size: letter; margin: 0.45in; }
+      body { background: #fff !important; }
+      .skip-link, header.site-header, .site-header, footer, .site-footer, #global-header, #global-footer,
+      .article-hero, .article-cover, .no-print, .up-next, nav { display: none !important; }
+      .prose > *:not(.plan):not(.print-only) { display: none !important; }
+      .print-only { display: block; }
+      .wrap, .narrow, .prose { max-width: none !important; padding: 0 !important; margin: 0 !important; }
+      .print-title { font-family: var(--font-display); font-size: 26pt; color: #172b20; margin: 0 0 2pt; }
+      .print-sub { font-size: 11pt; color: #4a554d; margin: 0 0 10pt; }
+      .plan { margin: 0; }
+      .plan h3 { font-size: 17pt; margin: 8pt 0 8pt; }
+      .plan .week2 { break-before: page; }
+      .day-grid { grid-template-columns: 1fr 1fr; gap: 9pt; }
+      .day { padding: 10pt 12pt; border-radius: 8px; border-color: #bbb; min-height: 96pt; }
+      .day .day-head { margin-bottom: 6pt; }
+      .day .day-num { font-size: 14pt; }
+      .day .day-note { font-size: 8pt; }
+      .day dl { font-size: 11pt; gap: 4pt 8pt; }
+      .day dt { font-size: 8.5pt; }
+      .gear-key { font-size: 9.5pt; margin: 0 0 6pt; }
+      .print-foot { font-size: 9pt; color: #4a554d; margin-top: 10pt; }
+      .notes-box { border: 1px solid #bbb; border-radius: 8px; padding: 10pt 12pt; min-height: 96pt; font-family: var(--font-display); font-size: 14pt; color: #172b20; background: repeating-linear-gradient(#fff 0 23pt, #ddd 23pt 24pt); background-position: 0 30pt; }
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div id="global-header"></div>
+
+<main id="main">
+<article>
+  <header class="article-hero">
+    <div class="wrap narrow">
+      <span class="tag green">Camp Kitchen · Family</span>
+      <h1>Our Two-Week RV Meal Plan (Toddler-Approved, Free Printable)</h1>
+      <p class="dek">Fourteen days of breakfasts, lunches, and dinners we actually cook at the campsite: griddle mornings, cooler lunches, and fire pit nights. It's built around a picky toddler and leftovers that turn into the next day's lunch.</p>
+      <div class="byline"><span>By James &amp; Mallory</span><span>6 min read</span></div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="article-cover"><img src="../assets/img/stories/splash-bacon-griddle.jpg" alt="Bacon cooking on our griddle at the campsite"></div>
+  </div>
+
+  <div class="wrap narrow prose">
+    <p class="disclosure no-print"><strong>Disclosure:</strong> This post contains affiliate links. If you buy through our links we may earn a small commission at no extra cost to you.</p>
+
+    <p>Meal planning is the difference between a relaxing trip and three nights of "what are we eating?" at 7 p.m. with a hungry toddler and two dogs underfoot. After a lot of trips (and a lot of gas-station dinners we're not proud of), we landed on a simple rhythm that works for two weeks or two nights.</p>
+
+    <div class="info-box">
+      <h3>Grab the free printable</h3>
+      <p>The full 14-day plan on two pages. Stick it on the camper fridge, or use it to build your grocery list.</p>
+      <div class="print-row">
+        <a class="btn btn-primary" href="../assets/printables/rv-meal-plan.pdf" download>Download the PDF</a>
+        <button class="btn" type="button" onclick="window.print()">Print this plan</button>
+      </div>
+    </div>
+
+    <h2>How we plan camping meals</h2>
+    <ul class="pack-list">
+      <li><strong>Travel days are the easiest days.</strong> Breakfast burritos made at home, sandwiches in the cooler, and an air fryer dinner. Nobody wants to cook after setting up camp.</li>
+      <li><strong>Cook once, eat twice.</strong> Every big dinner (chili, stew, a seafood boil) becomes the next day's lunch.</li>
+      <li><strong>Breakfast is the fun meal.</strong> The griddle comes out, the dogs line up, and it's the best part of the day.</li>
+      <li><strong>One "fire night" each week.</strong> Foil packs, pizza on the grate, or oysters if we're feeling fancy.</li>
+      <li><strong>Keep a toddler backup.</strong> Chicken tenders and fries in the air fryer have saved more than one dinner.</li>
+    </ul>
+
+    <figure class="no-print">
+      <img src="../assets/img/album/tn-christmas-06-chargrilled-oysters.jpg" alt="Chargrilled oysters with cheese, jalapeño and bacon" loading="lazy">
+      <figcaption>A fire night in Tennessee: cheesy jalapeño-bacon oysters right off the fire pit.</figcaption>
+    </figure>
+
+    <div class="print-only">
+      <p class="print-title">Our Two-Week RV Meal Plan</p>
+      <p class="print-sub">Toddler-approved camping meals · wanderingwillowrv.com</p>
+    </div>
+
+    <section class="plan" aria-label="14-day meal plan">
+      <h2 class="no-print">The 14-day plan</h2>
+      <p class="gear-key">🔥 fire pit · 🍳 griddle · 🌀 air fryer · 🍲 big pot · ❄️ cooler/no-cook</p>
+
+      <h3>Week 1</h3>
+      <div class="day-grid">
+        <div class="day"><div class="day-head"><span class="day-num">Day 1</span><span class="day-note">Travel day</span></div>
+          <dl><dt>B</dt><dd>Breakfast burritos made at home, wrapped in foil ❄️</dd><dt>L</dt><dd>Cooler sandwiches, fruit cups, chips ❄️</dd><dt>D</dt><dd>Chicken tenders &amp; fries 🌀</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 2</span></div>
+          <dl><dt>B</dt><dd>Pancakes &amp; bacon 🍳</dd><dt>L</dt><dd>Cheese quesadillas &amp; salsa 🍳</dd><dt>D</dt><dd>Smash burgers &amp; corn on the cob 🍳</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 3</span></div>
+          <dl><dt>B</dt><dd>Scrambled eggs &amp; toast 🍳</dd><dt>L</dt><dd>Turkey roll-ups, apple slices, crackers ❄️</dd><dt>D</dt><dd>Foil packs: sausage, potatoes &amp; peppers 🔥</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 4</span></div>
+          <dl><dt>B</dt><dd>Yogurt, granola &amp; berries ❄️</dd><dt>L</dt><dd>Hot dogs on the fire 🔥</dd><dt>D</dt><dd>Big pot of chili (save half) 🍲</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 5</span></div>
+          <dl><dt>B</dt><dd>French toast 🍳</dd><dt>L</dt><dd>Chili cheese dogs (leftover chili) 🍲</dd><dt>D</dt><dd>Chicken thighs, rice &amp; green beans 🌀</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 6</span></div>
+          <dl><dt>B</dt><dd>Egg &amp; sausage breakfast sandwiches 🍳</dd><dt>L</dt><dd>PB&amp;J, veggies &amp; ranch ❄️</dd><dt>D</dt><dd>Fried rice with leftover rice &amp; chicken 🍳</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 7</span><span class="day-note">Fire night</span></div>
+          <dl><dt>B</dt><dd>Biscuits &amp; sausage gravy 🌀</dd><dt>L</dt><dd>Foil-pan nachos 🔥</dd><dt>D</dt><dd>Flatbread pizzas on the grate 🔥</dd></dl></div>
+        <div class="day print-only"><div class="day-head"><span class="day-num">Snack bin</span><span class="day-note">Kid-reachable</span></div>
+          <dl><dt>✓</dt><dd>Goldfish, pretzels &amp; animal crackers</dd><dt>✓</dt><dd>Applesauce pouches &amp; fruit cups</dd><dt>✓</dt><dd>Cheese sticks &amp; grapes (cooler)</dd><dt>✓</dt><dd>Marshmallows, chocolate &amp; graham crackers</dd></dl></div>
+      </div>
+
+      <h3 class="week2">Week 2</h3>
+      <div class="day-grid">
+        <div class="day"><div class="day-head"><span class="day-num">Day 8</span></div>
+          <dl><dt>B</dt><dd>Hash browns &amp; eggs 🍳</dd><dt>L</dt><dd>Grilled cheese &amp; tomato soup 🍳</dd><dt>D</dt><dd>Shrimp &amp; sausage boil with corn &amp; potatoes 🍲</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 9</span></div>
+          <dl><dt>B</dt><dd>Overnight oats (made the night before) ❄️</dd><dt>L</dt><dd>Shrimp tacos from boil leftovers 🍳</dd><dt>D</dt><dd>Pork chops &amp; boxed mac and cheese 🌀</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 10</span></div>
+          <dl><dt>B</dt><dd>Pancakes &amp; fruit 🍳</dd><dt>L</dt><dd>Chicken Caesar wraps ❄️</dd><dt>D</dt><dd>Philly cheesesteaks 🍳</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 11</span></div>
+          <dl><dt>B</dt><dd>Breakfast burritos 🍳</dd><dt>L</dt><dd>Cheesesteak quesadillas (leftovers) 🍳</dd><dt>D</dt><dd>Beef stew &amp; cornbread (save half) 🍲</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 12</span><span class="day-note">Lazy morning</span></div>
+          <dl><dt>B</dt><dd>Cereal, bananas &amp; coffee ❄️</dd><dt>L</dt><dd>Stew leftovers 🍲</dd><dt>D</dt><dd>Chargrilled oysters or grilled chicken 🔥</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 13</span><span class="day-note">Clean-out day</span></div>
+          <dl><dt>B</dt><dd>French toast with the last of the bread 🍳</dd><dt>L</dt><dd>Hot dogs &amp; chips 🔥</dd><dt>D</dt><dd>"Everything" hash with leftovers 🍳</dd></dl></div>
+        <div class="day"><div class="day-head"><span class="day-num">Day 14</span><span class="day-note">Travel day</span></div>
+          <dl><dt>B</dt><dd>Muffins &amp; fruit ❄️</dd><dt>L</dt><dd>Cooler sandwiches ❄️</dd><dt>D</dt><dd>Takeout on the way home. You earned it.</dd></dl></div>
+        <div class="day notes-box print-only">Notes &amp; grocery list</div>
+      </div>
+      <p class="print-only print-foot">Swap any day for a restaurant night. Breakfast can always be cereal. Free printable from wanderingwillowrv.com</p>
+    </section>
+
+    <h2>Prep at home before you leave</h2>
+    <p>Thirty minutes in your own kitchen saves hours at the campsite (and a lot of dishes in a tiny sink).</p>
+    <ul class="pack-list">
+      <li><strong>Make and freeze breakfast burritos</strong> for the first morning. They thaw in the cooler and reheat on the griddle.</li>
+      <li><strong>Chop the peppers, onions, and potatoes</strong> for foil packs and keep them in zip bags.</li>
+      <li><strong>Brown the ground beef</strong> for chili or tacos at home so there's less grease at camp.</li>
+      <li><strong>Mix pancake batter dry ingredients</strong> in a shaker bottle. At camp you just add water.</li>
+      <li><strong>Pre-cut toddler snacks</strong> (grapes, cheese cubes, cucumbers) into grab-and-go cups.</li>
+      <li><strong>Freeze water bottles</strong> to use as cooler ice that you can drink later.</li>
+    </ul>
+
+    <h2>The gear that makes this plan work</h2>
+    <p>Everything above is made with four things: a flat-top griddle, an air fryer, a fire pit with a grate, and a propane burner with a big pot. We wrote up all of them, plus the rest of our favorite camping gear, in our <a href="rv-family-gift-guide.html">gift guide for RV families</a>.</p>
+
+    <div class="product-grid no-print">
+      <article class="product">
+        <div class="product-img illus"><img src="../assets/img/gear/air-fryer-illustration.svg" alt="Illustration of our countertop air fryer" loading="lazy"></div>
+        <span class="badge">We own it</span>
+        <h4>Our Air Fryer</h4>
+        <p>Toddler chicken tenders in ten minutes, and no hot oven heating up the camper.</p>
+        <a class="btn btn-primary" href="https://link.amazon/B0amJ8iCw" target="_blank" rel="sponsored nofollow noopener">Check price</a>
+      </article>
+      <article class="product">
+        <div class="product-img"><img style="object-position: center 88%" src="../assets/img/stories/splash-griddle-prep.jpg" alt="Our aluminum roll-up table next to the griddle" loading="lazy"></div>
+        <span class="badge">We own it</span>
+        <h4>Aluminum Roll-Up Table</h4>
+        <p>Our griddle prep station every morning. Sets up in a minute and wipes clean.</p>
+        <a class="btn btn-primary" href="https://link.amazon/B0dthjg9H" target="_blank" rel="sponsored nofollow noopener">Check price</a>
+      </article>
+    </div>
+
+    <h2>Toddler tips that saved our sanity</h2>
+    <ul class="pack-list">
+      <li><strong>Keep one "safe" food on every plate.</strong> If dinner's a flop, at least the fruit or the bread got eaten.</li>
+      <li><strong>Eat early.</strong> Dinner by 5:30 means bath and bed before the campground gets loud.</li>
+      <li><strong>Let them help.</strong> Stirring pancake batter or adding cheese to quesadillas buys a lot of cooperation.</li>
+      <li><strong>Pack a snack bin they can reach.</strong> It keeps "I'm hungry" from turning into a meltdown.</li>
+    </ul>
+
+    <p>What's your family's go-to campsite meal? <a href="../contact.html">Tell us</a>. We'll add the best ones to the plan.</p>
+    <p class="sign-off">— James &amp; Mallory 🐾</p>
+
+    <div class="up-next">
+      <span class="eyebrow">Up next</span>
+      <article class="card">
+        <div class="card-body">
+          <span class="tag green">Gift Guide</span>
+          <h3><a href="rv-family-gift-guide.html">16 Gifts for RV Families That Actually Get Used</a></h3>
+          <p>The gear that earns its spot in our camper every trip, sorted by who you're shopping for.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</article>
+<div style="height:72px"></div>
+</main>
+
+<div id="global-footer"></div>
+<script src="/assets/js/main.js?v=update"></script>
+</body>
+</html>
