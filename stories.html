@@ -14,8 +14,9 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261113">
   <style>
     .place-cta { display: inline-block; margin-top: 12px; font-weight: 600; font-size: .92rem; color: var(--ember-dark); }
     .place-card:hover .place-cta { color: var(--ember); }
@@ -46,6 +47,7 @@
       <button class="chip" data-filter="family" aria-pressed="false">Kids &amp; dogs</button>
     </div>
 
+    <h2 class="visually-hidden">All stories</h2>
     <div class="grid">
       <!--
         ===== HOW TO ADD A STORY CARD =====
@@ -57,7 +59,7 @@
 
       <article class="card" data-category="gear family">
         <div class="card-media">
-          <img src="assets/img/album/tn-christmas-01-decked-out-site.jpg" alt="Our camper decorated for Christmas at a Tennessee campground">
+          <img src="assets/img/album/tn-christmas-01-decked-out-site.webp" srcset="assets/img/album/tn-christmas-01-decked-out-site-480.webp 480w, assets/img/album/tn-christmas-01-decked-out-site-960.webp 960w, assets/img/album/tn-christmas-01-decked-out-site.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Our camper decorated for Christmas at a Tennessee campground">
           <span class="fallback">🎁</span>
         </div>
         <div class="card-body">
@@ -70,7 +72,7 @@
 
       <article class="card" data-category="family gear">
         <div class="card-media">
-          <img src="assets/img/stories/splash-bacon-griddle.jpg" alt="Bacon on the griddle at our campsite">
+          <img src="assets/img/stories/splash-bacon-griddle.webp" srcset="assets/img/stories/splash-bacon-griddle-480.webp 480w, assets/img/stories/splash-bacon-griddle-960.webp 960w, assets/img/stories/splash-bacon-griddle.webp 1200w" sizes="(max-width: 700px) 92vw, 400px" width="1200" height="1600" alt="Bacon on the griddle at our campsite">
           <span class="fallback">🍳</span>
         </div>
         <div class="card-body">
@@ -83,7 +85,7 @@
 
       <article class="card" data-category="family gear">
         <div class="card-media">
-          <img src="assets/img/album/hidden-hollow-11-pioneer-hitched.jpg" alt="Our truck hitched to the camper, packed and ready to go">
+          <img src="assets/img/album/hidden-hollow-11-pioneer-hitched.webp" srcset="assets/img/album/hidden-hollow-11-pioneer-hitched-480.webp 480w, assets/img/album/hidden-hollow-11-pioneer-hitched-960.webp 960w, assets/img/album/hidden-hollow-11-pioneer-hitched.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1032" alt="Our truck hitched to the camper, packed and ready to go">
           <span class="fallback">🎒</span>
         </div>
         <div class="card-body">
@@ -97,7 +99,7 @@
       <article class="card" data-category="trips campgrounds family">
         <div class="card-media">
           <span class="willow-score">🐾 Willow Score 5/5</span>
-          <img src="assets/img/stories/splash-july-4th.jpg" alt="Family cookout at Splash RV Resort">
+          <img src="assets/img/stories/splash-july-4th.webp" srcset="assets/img/stories/splash-july-4th-480.webp 480w, assets/img/stories/splash-july-4th.webp 629w" sizes="(max-width: 700px) 92vw, 400px" width="629" height="831" alt="Family cookout at Splash RV Resort">
           <span class="fallback">🎆</span>
         </div>
         <div class="card-body">
@@ -110,7 +112,7 @@
 
       <article class="card" data-category="prep gear">
         <div class="card-media">
-          <img src="assets/img/stories/hurricane-michael.jpg" alt="Our camper running on generator power after the storm">
+          <img src="assets/img/stories/hurricane-michael.webp" srcset="assets/img/stories/hurricane-michael-480.webp 480w, assets/img/stories/hurricane-michael-960.webp 960w, assets/img/stories/hurricane-michael.webp 1537w" sizes="(max-width: 700px) 92vw, 400px" width="1537" height="877" alt="Our camper running on generator power after the storm">
           <span class="fallback">⚡</span>
         </div>
         <div class="card-body">
@@ -150,7 +152,7 @@
            otherwise to its album stack (album.html#trip-id opens that stack). -->
       <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
-          <img src="assets/img/album/tn-christmas-01-decked-out-site.jpg" alt="Our Rockwood decorated for Christmas at a Tennessee campground" loading="lazy">
+          <img src="assets/img/album/tn-christmas-01-decked-out-site.webp" srcset="assets/img/album/tn-christmas-01-decked-out-site-480.webp 480w, assets/img/album/tn-christmas-01-decked-out-site-960.webp 960w, assets/img/album/tn-christmas-01-decked-out-site.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Our Rockwood decorated for Christmas at a Tennessee campground" loading="lazy">
           <span class="fallback">🎄</span>
         </div>
         <div class="card-body">
@@ -164,7 +166,7 @@
 
       <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
-          <img src="assets/img/album/margaritaville-02-sabre-under-cover.jpg" alt="Our Sabre parked at a covered RV site" loading="lazy">
+          <img src="assets/img/album/margaritaville-02-sabre-under-cover.webp" srcset="assets/img/album/margaritaville-02-sabre-under-cover-480.webp 480w, assets/img/album/margaritaville-02-sabre-under-cover-960.webp 960w, assets/img/album/margaritaville-02-sabre-under-cover.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Our Sabre parked at a covered RV site" loading="lazy">
           <span class="fallback">🏕️</span>
         </div>
         <div class="card-body">
@@ -178,7 +180,7 @@
 
       <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
-          <img src="assets/img/album/monte-sano-07-city-lights-table.jpg" alt="Our campsite at night with Huntsville city lights through the trees" loading="lazy">
+          <img src="assets/img/album/monte-sano-07-city-lights-table.webp" srcset="assets/img/album/monte-sano-07-city-lights-table-480.webp 480w, assets/img/album/monte-sano-07-city-lights-table-960.webp 960w, assets/img/album/monte-sano-07-city-lights-table.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Our campsite at night with Huntsville city lights through the trees" loading="lazy">
           <span class="fallback">🏕️</span>
         </div>
         <div class="card-body">
@@ -192,7 +194,7 @@
 
       <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
-          <img src="assets/img/album/hidden-hollow-07-pull-through.jpg" alt="Long concrete RV pad with full hookups at Hidden Hollow" loading="lazy">
+          <img src="assets/img/album/hidden-hollow-07-pull-through.webp" srcset="assets/img/album/hidden-hollow-07-pull-through-480.webp 480w, assets/img/album/hidden-hollow-07-pull-through-960.webp 960w, assets/img/album/hidden-hollow-07-pull-through.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Long concrete RV pad with full hookups at Hidden Hollow" loading="lazy">
           <span class="fallback">🏕️</span>
         </div>
         <div class="card-body">
@@ -207,7 +209,7 @@
       <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
           <span class="willow-score">🐾 5/5</span>
-          <img src="assets/img/stories/splash-poolside.jpg" alt="Pool at Splash RV Resort" loading="lazy">
+          <img src="assets/img/stories/splash-poolside.webp" srcset="assets/img/stories/splash-poolside-480.webp 480w, assets/img/stories/splash-poolside-960.webp 960w, assets/img/stories/splash-poolside.webp 1200w" sizes="(max-width: 700px) 92vw, 400px" width="1200" height="1600" alt="Pool at Splash RV Resort" loading="lazy">
           <span class="fallback">🏕️</span>
         </div>
         <div class="card-body">
@@ -221,7 +223,7 @@
 
       <article class="card place-card" data-category="campgrounds">
         <div class="card-media">
-          <img src="assets/img/album/cheaha-01-misty-overlook.jpg" alt="Misty valley view from the Cheaha overlook" loading="lazy">
+          <img src="assets/img/album/cheaha-01-misty-overlook.webp" srcset="assets/img/album/cheaha-01-misty-overlook-480.webp 480w, assets/img/album/cheaha-01-misty-overlook-960.webp 960w, assets/img/album/cheaha-01-misty-overlook.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Misty valley view from the Cheaha overlook" loading="lazy">
           <span class="fallback">🏕️</span>
         </div>
         <div class="card-body">
@@ -249,6 +251,6 @@
 </main>
 
 <div id="global-footer"></div>
-<script src="/assets/js/main.js?v=update"></script>
+<script src="/assets/js/main.js?v=20261113"></script>
 </body>
 </html>

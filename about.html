@@ -14,8 +14,9 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261113">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -64,7 +65,7 @@
   <div class="wrap grid grid-2" style="align-items:start">
     <article class="card">
       <div class="card-media">
-        <img src="assets/img/willow.jpg" alt="Willow, our dog, relaxing at a campsite">
+        <img src="assets/img/willow.webp" srcset="assets/img/willow-480.webp 480w, assets/img/willow.webp 624w" sizes="(max-width: 700px) 92vw, 400px" width="624" height="831" alt="Willow, our dog, relaxing at a campsite">
         <span class="fallback">🐾</span>
       </div>
       <div class="card-body">
@@ -75,7 +76,7 @@
     </article>
     <article class="card">
       <div class="card-media">
-        <img src="assets/img/stories/hurricane-michael.jpg" alt="Downed trees and our camper after Hurricane Michael">
+        <img src="assets/img/stories/hurricane-michael.webp" srcset="assets/img/stories/hurricane-michael-480.webp 480w, assets/img/stories/hurricane-michael-960.webp 960w, assets/img/stories/hurricane-michael.webp 1537w" sizes="(max-width: 700px) 92vw, 400px" width="1537" height="877" alt="Downed trees and our camper after Hurricane Michael">
         <span class="fallback">🌀</span>
       </div>
       <div class="card-body">
@@ -101,6 +102,6 @@
 </main>
 
 <div id="global-footer"></div>
-<script src="/assets/js/main.js?v=update"></script>
+<script src="/assets/js/main.js?v=20261113"></script>
 </body>
 </html>

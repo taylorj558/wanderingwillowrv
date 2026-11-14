@@ -15,8 +15,10 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="image" href="assets/img/hero.webp" imagesrcset="assets/img/hero-480.webp 480w, assets/img/hero-960.webp 960w, assets/img/hero.webp 1319w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261113">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -24,10 +26,11 @@
 <!-- ============ HEADER (same on every page) ============ -->
 <div id="global-header"></div>
 
+<main id="main">
   <!-- ============ HERO ============ -->
   <section class="hero">
     <!-- Swap in your best wide photo (campsite at dusk, the Sabre set up, etc.). 2000px wide is plenty. -->
-    <img class="hero-img" src="assets/img/hero.jpg" alt="Our 5th wheel set up at a wooded campsite at dusk">
+    <img class="hero-img" fetchpriority="high" src="assets/img/hero.webp" srcset="assets/img/hero-480.webp 480w, assets/img/hero-960.webp 960w, assets/img/hero.webp 1319w" sizes="100vw" width="1319" height="989" alt="Our 5th wheel set up at a wooded campsite at dusk">
     <div class="wrap">
       <span class="eyebrow">Family RV travel from the Deep South</span>
       <h1>Wandering Willow RV</h1>
@@ -58,7 +61,7 @@
       </div>
       <div class="photo-frame">
         <!-- Family/dealership photo or Willow in her favorite camp chair -->
-        <img src="assets/img/family.jpg" alt="James and Mallory with Willow in front of our Sabre 5th wheel">
+        <img src="assets/img/family.webp" srcset="assets/img/family-480.webp 480w, assets/img/family-960.webp 960w, assets/img/family.webp 1319w" sizes="(max-width: 900px) 92vw, 540px" width="1319" height="989" alt="James and Mallory with Willow in front of our Sabre 5th wheel">
       </div>
     </div>
   </section>
@@ -77,7 +80,7 @@
       <!-- Featured story: big horizontal card -->
       <article class="card card-feature" style="margin-bottom:24px">
         <div class="card-media">
-          <img src="assets/img/stories/hurricane-michael.jpg" alt="Our camper after Hurricane Michael with the generator running">
+          <img src="assets/img/stories/hurricane-michael.webp" srcset="assets/img/stories/hurricane-michael-480.webp 480w, assets/img/stories/hurricane-michael-960.webp 960w, assets/img/stories/hurricane-michael.webp 1537w" sizes="(max-width: 700px) 92vw, 400px" width="1537" height="877" alt="Our camper after Hurricane Michael with the generator running">
           <span class="fallback">⚡</span>
         </div>
         <div class="card-body">
@@ -92,7 +95,7 @@
         <article class="card">
           <div class="card-media">
             <span class="willow-score">🐾 Willow Score 5/5</span>
-            <img src="assets/img/stories/splash-july-4th.jpg" alt="Fireworks over Splash RV Resort">
+            <img src="assets/img/stories/splash-july-4th.webp" srcset="assets/img/stories/splash-july-4th-480.webp 480w, assets/img/stories/splash-july-4th.webp 629w" sizes="(max-width: 700px) 92vw, 400px" width="629" height="831" alt="Fireworks over Splash RV Resort">
             <span class="fallback">🎆</span>
           </div>
           <div class="card-body">
@@ -105,7 +108,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="assets/img/album/hidden-hollow-11-pioneer-hitched.jpg" alt="Our truck hitched to the camper, packed and ready to go">
+            <img src="assets/img/album/hidden-hollow-11-pioneer-hitched.webp" srcset="assets/img/album/hidden-hollow-11-pioneer-hitched-480.webp 480w, assets/img/album/hidden-hollow-11-pioneer-hitched-960.webp 960w, assets/img/album/hidden-hollow-11-pioneer-hitched.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1032" alt="Our truck hitched to the camper, packed and ready to go">
             <span class="fallback">🎒</span>
           </div>
           <div class="card-body">
@@ -118,7 +121,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="assets/img/album/tn-christmas-01-decked-out-site.jpg" alt="Our camper decorated for Christmas at a Tennessee campground">
+            <img src="assets/img/album/tn-christmas-01-decked-out-site.webp" srcset="assets/img/album/tn-christmas-01-decked-out-site-480.webp 480w, assets/img/album/tn-christmas-01-decked-out-site-960.webp 960w, assets/img/album/tn-christmas-01-decked-out-site.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="1200" alt="Our camper decorated for Christmas at a Tennessee campground">
             <span class="fallback">🎁</span>
           </div>
           <div class="card-body">
@@ -160,15 +163,15 @@
       </div>
       <div class="grid">
         <a class="card" href="gear.html#power" style="text-decoration:none;color:inherit">
-          <div class="card-media"><img src="assets/img/gear/power.jpg" alt="Portable power station"><span class="fallback">🔋</span></div>
+          <div class="card-media"><img src="assets/img/gear/power.webp" srcset="assets/img/gear/power-480.webp 480w, assets/img/gear/power-960.webp 960w, assets/img/gear/power.webp 1200w" sizes="(max-width: 700px) 92vw, 400px" width="1200" height="805" alt="Portable power station"><span class="fallback">🔋</span></div>
           <div class="card-body"><span class="tag">Power</span><h3>Quiet power, no generator</h3><p>The power station that runs our fridge and CPAP — plus solar to keep it topped off.</p></div>
         </a>
         <a class="card" href="gear.html#water" style="text-decoration:none;color:inherit">
-          <div class="card-media"><img src="assets/img/gear/water.jpg" alt="Countertop water filter"><span class="fallback">💧</span></div>
+          <div class="card-media"><img src="assets/img/gear/berky.webp" srcset="assets/img/gear/berky-480.webp 480w, assets/img/gear/berky-960.webp 960w, assets/img/gear/berky.webp 1600w" sizes="(max-width: 700px) 92vw, 400px" width="1600" height="893" alt="Our Big Berkey water filter" loading="lazy"><span class="fallback">💧</span></div>
           <div class="card-body"><span class="tag blue">Water</span><h3>Clean water anywhere</h3><p>Our everyday filter, our serious drinking-water setup, and the inline filter we never camp without.</p></div>
         </a>
         <a class="card" href="gear.html#campground" style="text-decoration:none;color:inherit">
-          <div class="card-media"><img src="assets/img/gear/scooter.jpg" alt="Electric scooter at a campsite"><span class="fallback">🛴</span></div>
+          <div class="card-media"><img src="assets/img/gear/gyroor.webp" srcset="assets/img/gear/gyroor-480.webp 480w, assets/img/gear/gyroor-960.webp 960w, assets/img/gear/gyroor.webp 1200w" sizes="(max-width: 700px) 92vw, 400px" width="1200" height="1600" alt="Gyroor seated electric scooter" loading="lazy"><span class="fallback">🛴</span></div>
           <div class="card-body"><span class="tag green">Campground life</span><h3>Getting around big resorts</h3><p>The seated e-scooter that made July in Florida a lot less sweaty.</p></div>
         </a>
       </div>
@@ -192,6 +195,6 @@
 
 <!-- ============ FOOTER (same on every page) ============ -->
 <div id="global-footer"></div>
-<script src="/assets/js/main.js?v=update"></script>
+<script src="/assets/js/main.js?v=20261113"></script>
 </body>
 </html>

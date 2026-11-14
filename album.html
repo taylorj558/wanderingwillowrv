@@ -9,12 +9,13 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <!-- Global Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261113">
 
   <!-- Site fonts + 'Caveat' for handwritten scrapbook captions -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
   <style>
     /* ----------------------------------------------------
@@ -30,6 +31,8 @@
     /* One trip = one stack of photos */
     .trip { margin: 0; }
     .trip-photos { display: none; }          /* the photo list only feeds the viewer */
+    /* Hold each stack's space until the script builds it, so the page doesn't jump */
+    .trip:not(:has(.stack))::before { content: ""; display: block; aspect-ratio: 1 / 1.12; }
 
     .stack {
       position: relative; display: block; width: 100%;
@@ -296,7 +299,9 @@
 
     function photosOf(trip) {
       return Array.prototype.map.call(trip.querySelectorAll(".trip-photos a"), function (a) {
-        return { src: a.getAttribute("href"), caption: a.dataset.caption || "", alt: a.textContent.trim() };
+        var href = a.getAttribute("href"), base = href.replace(/\.(jpe?g|png)$/i, "");
+        // Optimized WebP copies sit next to each photo: full (viewer), -960 (stack cover), -480 (thumbnails)
+        return { src: base + ".webp", mid: base + "-960.webp", thumb: base + "-480.webp", caption: a.dataset.caption || "", alt: a.textContent.trim() };
       });
     }
 
@@ -309,10 +314,10 @@
       btn.className = "stack";
       btn.setAttribute("aria-label", "Open " + trip.dataset.title + " album, " + photos.length + " photos");
       var html = "";
-      if (photos[2]) html += '<div class="print back-2" aria-hidden="true"><div class="ph" style="background-image:url(\'' + photos[2].src + '\')"></div></div>';
-      if (photos[1]) html += '<div class="print back-1" aria-hidden="true"><div class="ph" style="background-image:url(\'' + photos[1].src + '\')"></div></div>';
+      if (photos[2]) html += '<div class="print back-2" aria-hidden="true"><div class="ph" style="background-image:url(\'' + photos[2].thumb + '\')"></div></div>';
+      if (photos[1]) html += '<div class="print back-1" aria-hidden="true"><div class="ph" style="background-image:url(\'' + photos[1].thumb + '\')"></div></div>';
       html += '<div class="print front"><div class="tape"></div><span class="count-badge">' + photos.length + ' photos</span>' +
-              '<img src="' + photos[0].src + '" alt="' + photos[0].alt.replace(/"/g, "&quot;") + '" loading="lazy">' +
+              '<img src="' + photos[0].mid + '" alt="' + photos[0].alt.replace(/"/g, "&quot;") + '" loading="lazy">' +
               '<div class="stack-title"></div><div class="stack-meta"></div></div>';
       btn.innerHTML = html;
       btn.querySelector(".stack-title").textContent = trip.dataset.title;
@@ -330,7 +335,7 @@
         t.type = "button";
         t.setAttribute("aria-label", "Photo " + (i + 1) + ": " + (p.caption || p.alt));
         t.innerHTML = '<img loading="lazy" alt="">';
-        t.firstChild.src = p.src;
+        t.firstChild.src = p.thumb;
         t.addEventListener("click", function () { show(i); });
         vThumbs.appendChild(t);
       });
@@ -410,6 +415,6 @@
   </script>
 
   <!-- Central JS Script -->
-  <script src="/assets/js/main.js?v=update"></script>
+  <script src="/assets/js/main.js?v=20261113"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
   --forest: #23402f;
   --forest-deep: #172b20;
   --willow: #8a9a6b;
-  --ember: #c4622d;
+  --ember: #b85a28;
   --ember-dark: #a14c1f;
   --line: #ddd3c0;
 
@@ -37,7 +37,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--ember-dark); text-underline-offset: 3px; }
 a:hover { color: var(--ember); }
 h1, h2, h3, h4 {
@@ -69,7 +69,7 @@ p { margin: 0 0 1.1em; }
 .lead { font-size: 1.2rem; color: var(--ink-soft); }
 .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 32px; }
 .section-head h2 { margin: 0; }
-.skip-link { position: absolute; left: -999px; top: 8px; background: var(--forest); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
+.skip-link { position: absolute; left: -9999px; top: 8px; background: var(--forest); color: #fff; padding: 8px 14px; border-radius: 8px; z-index: 100; }
 .skip-link:focus { left: 12px; }
 
 /* ---------- Buttons ---------- */
@@ -324,9 +324,9 @@ blockquote, .pull-quote {
   align-self: flex-start; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
   padding: 4px 10px; border-radius: 999px; background: var(--ember); color: #fff; margin-bottom: 10px;
 }
-.product .badge.wish { background: var(--willow); }
+.product .badge.wish { background: #5d6b45; }
 .product .badge.friend { background: #4d6f7c; }
-.product h4 { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 .4rem; color: var(--forest-deep); }
+.product h3, .product h4 { font-family: var(--font-display); font-size: 1.2rem; margin: 0 0 .4rem; color: var(--forest-deep); }
 .product p { font-size: .96rem; color: var(--ink-soft); flex: 1; }
 .product .specs { font-size: .85rem; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 10px; margin-bottom: 14px; }
 .product .btn { align-self: flex-start; padding: 10px 18px; font-size: .92rem; }
@@ -356,7 +356,7 @@ blockquote, .pull-quote {
 .site-footer a:hover { color: #f0c39f; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
-.footer-grid h4 { color: #fff; font-family: var(--font-body); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
+.footer-grid h2, .footer-grid h4 { color: #fff; font-family: var(--font-body); font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 12px; }
 .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
 .footer-brand { font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin-bottom: 8px; }
 .socials { display: flex; gap: 10px; margin-top: 16px; }
@@ -376,3 +376,7 @@ blockquote, .pull-quote {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Reserve the header's space before it loads, so the page doesn't jump */
+#global-header { height: 69px; }
+.info-box h2 { font-size: 1.3rem; margin-top: 0; }

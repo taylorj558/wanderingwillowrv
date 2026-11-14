@@ -14,8 +14,9 @@
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261113">
   <style>
     /* Packing-list boxes for this post */
     .pack-list { list-style: none; padding: 0; margin: 1.2rem 0 1.6rem; display: grid; gap: 8px; }
@@ -25,7 +26,7 @@
     .bin-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 14px; margin: 1.4rem 0 2rem; }
     .bin { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
     .bin .bin-icon { font-size: 1.6rem; }
-    .bin h4 { font-family: var(--font-display); font-size: 1.1rem; margin: 6px 0 4px; color: var(--forest-deep); }
+    .bin h3 { font-family: var(--font-display); font-size: 1.1rem; margin: 6px 0 4px; color: var(--forest-deep); }
     .bin p { font-size: .93rem; color: var(--ink-soft); margin: 0; }
     .illus-note { font-size: .78rem; color: var(--ink-soft); margin: -8px 0 10px; font-style: italic; }
     .product-img.illus img { object-fit: cover; }
@@ -48,7 +49,7 @@
   </header>
 
   <div class="wrap">
-    <div class="article-cover"><img src="../assets/img/album/hidden-hollow-11-pioneer-hitched.jpg" alt="Our Ram hitched to the Pioneer travel trailer, packed and ready to roll"></div>
+    <div class="article-cover"><img src="../assets/img/album/hidden-hollow-11-pioneer-hitched.webp" srcset="../assets/img/album/hidden-hollow-11-pioneer-hitched-480.webp 480w, ../assets/img/album/hidden-hollow-11-pioneer-hitched-960.webp 960w, ../assets/img/album/hidden-hollow-11-pioneer-hitched.webp 1600w" sizes="(max-width: 1100px) 100vw, 1100px" width="1600" height="1032" alt="Our Ram hitched to the Pioneer travel trailer, packed and ready to roll"></div>
   </div>
 
   <div class="wrap narrow prose">
@@ -58,7 +59,7 @@
     <p>So we did what any reasonable family does after enough of those moments. We built a system. Most of our camper stays packed between trips, a few bins come in and out of the house, and a short checklist covers the rest. Here's all of it, including the two pieces of gear we'd buy again tomorrow.</p>
 
     <div class="info-box">
-      <h3>Want the printable version?</h3>
+      <h2>Want the printable version?</h2>
       <p>We turned this into an interactive checklist you can tick off on your phone while you load up. <a href="../checklist.html">Open the Family &amp; Pup RV Checklist →</a></p>
     </div>
 
@@ -66,16 +67,16 @@
     <p>The biggest packing upgrade we ever made wasn't a product. It was deciding what <em>lives</em> in the camper. If we use something every trip, we buy a second one and it never leaves the rig. That cut our packing time in half and pretty much ended the forgotten-coffee-filter era.</p>
 
     <div class="bin-grid">
-      <div class="bin"><div class="bin-icon">🏕️</div><h4>Lives in the rig</h4><p>Kitchen basics, bedding, toiletries, hoses, leveling blocks, outdoor rug, chairs, and the table.</p></div>
-      <div class="bin"><div class="bin-icon">🧺</div><h4>Comes from home</h4><p>Clothes, fridge food, meds, the kid bag, the dog bag, and devices.</p></div>
-      <div class="bin"><div class="bin-icon">📋</div><h4>Checked every time</h4><p>Propane, fresh water, tire pressure, the surge protector, and a quick walk-around before we pull out.</p></div>
+      <div class="bin"><div class="bin-icon">🏕️</div><h3>Lives in the rig</h3><p>Kitchen basics, bedding, toiletries, hoses, leveling blocks, outdoor rug, chairs, and the table.</p></div>
+      <div class="bin"><div class="bin-icon">🧺</div><h3>Comes from home</h3><p>Clothes, fridge food, meds, the kid bag, the dog bag, and devices.</p></div>
+      <div class="bin"><div class="bin-icon">📋</div><h3>Checked every time</h3><p>Propane, fresh water, tire pressure, the surge protector, and a quick walk-around before we pull out.</p></div>
     </div>
 
     <h2>The camp kitchen</h2>
     <p>We cook almost every meal at the campsite. Partly to save money, and partly because breakfast on the griddle with the dogs supervising is one of our favorite parts of camping.</p>
 
     <figure>
-      <img src="../assets/img/stories/splash-bacon-griddle.jpg" alt="Bacon cooking on our griddle at the campsite">
+      <img src="../assets/img/stories/splash-bacon-griddle.webp" srcset="../assets/img/stories/splash-bacon-griddle-480.webp 480w, ../assets/img/stories/splash-bacon-griddle-960.webp 960w, ../assets/img/stories/splash-bacon-griddle.webp 1200w" sizes="(max-width: 780px) 92vw, 740px" width="1200" height="1600" alt="Bacon cooking on our griddle at the campsite">
       <figcaption>Griddle breakfast is non-negotiable.</figcaption>
     </figure>
 
@@ -87,14 +88,14 @@
         <div class="product-img illus"><img src="../assets/img/gear/air-fryer-illustration.svg" alt="Illustration of our countertop air fryer"></div>
         <p class="illus-note">Illustration. Our real one is in the camper right now.</p>
         <span class="badge">We own it</span>
-        <h4>Our Air Fryer</h4>
+        <h3>Our Air Fryer</h3>
         <p>The one that lives in our camper. Quick toddler meals, crispy leftovers, and no hot oven on summer trips.</p>
         <a class="btn btn-primary" href="https://link.amazon/B0amJ8iCw" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
     </div>
 
     <div class="info-box">
-      <h4>Running it on shore power</h4>
+      <h3>Running it on shore power</h3>
       <p>Air fryers pull a lot of power while they heat up. On a 30-amp site, don't run it at the same time as the air conditioner and the microwave. If the breaker trips, that's why. We just run them one at a time.</p>
     </div>
 
@@ -112,7 +113,7 @@
     <p>Our goal at every site is the same: make the outside feel like a second living room. A rug, chairs, a real table, and some lights turn a gravel pad into the place everyone wants to hang out.</p>
 
     <figure>
-      <img src="../assets/img/album/monte-sano-07-city-lights-table.jpg" alt="Our outdoor rug and picnic table at night with city lights through the trees">
+      <img src="../assets/img/album/monte-sano-07-city-lights-table.webp" srcset="../assets/img/album/monte-sano-07-city-lights-table-480.webp 480w, ../assets/img/album/monte-sano-07-city-lights-table-960.webp 960w, ../assets/img/album/monte-sano-07-city-lights-table.webp 1600w" sizes="(max-width: 780px) 92vw, 740px" width="1600" height="1200" alt="Our outdoor rug and picnic table at night with city lights through the trees">
       <figcaption>Rug down, table up, and the lights of Huntsville below us at Monte Sano.</figcaption>
     </figure>
 
@@ -121,9 +122,9 @@
 
     <div class="product-grid">
       <article class="product">
-        <div class="product-img illus"><img style="object-position: center 88%" src="../assets/img/stories/splash-griddle-prep.jpg" alt="Our aluminum roll-up table set up next to the griddle at Splash RV Resort"></div>
+        <div class="product-img illus"><img style="object-position: center 88%" src="../assets/img/stories/splash-griddle-prep.webp" srcset="../assets/img/stories/splash-griddle-prep-480.webp 480w, ../assets/img/stories/splash-griddle-prep-960.webp 960w, ../assets/img/stories/splash-griddle-prep.webp 1200w" sizes="(max-width: 700px) 92vw, 400px" width="1200" height="1600" alt="Our aluminum roll-up table set up next to the griddle at Splash RV Resort"></div>
         <span class="badge">We own it</span>
-        <h4>Our Aluminum Roll-Up Table</h4>
+        <h3>Our Aluminum Roll-Up Table</h3>
         <p>Rolls up small, sets up fast, and wipes clean. It's our prep station, snack bar, and air fryer stand.</p>
         <a class="btn btn-primary" href="https://link.amazon/B0dthjg9H" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
@@ -140,7 +141,7 @@
     </ul>
 
     <figure>
-      <img src="../assets/img/album/cheaha-07-camp-chairs.jpg" alt="Two camp chairs set up beside our camper at Cheaha State Park">
+      <img src="../assets/img/album/cheaha-07-camp-chairs.webp" srcset="../assets/img/album/cheaha-07-camp-chairs-480.webp 480w, ../assets/img/album/cheaha-07-camp-chairs-960.webp 960w, ../assets/img/album/cheaha-07-camp-chairs.webp 1600w" sizes="(max-width: 780px) 92vw, 740px" width="1600" height="1200" alt="Two camp chairs set up beside our camper at Cheaha State Park">
       <figcaption>Two chairs, no plans. Cheaha State Park.</figcaption>
     </figure>
 
@@ -149,20 +150,20 @@
 
     <div class="product-grid">
       <article class="product">
-        <div class="product-img"><img src="../assets/img/gear/oupes-mega-1.jpg" alt="Our Oupes Mega 1 power station"></div>
+        <div class="product-img"><img src="../assets/img/gear/oupes-mega-1.webp" srcset="../assets/img/gear/oupes-mega-1-480.webp 480w, ../assets/img/gear/oupes-mega-1.webp 624w" sizes="(max-width: 700px) 92vw, 400px" width="624" height="831" alt="Our Oupes Mega 1 power station"></div>
         <span class="badge">Our pick</span>
-        <h4>Oupes Mega 1 Power Station</h4>
+        <h3>Oupes Mega 1 Power Station</h3>
         <p>Runs the fridge, the CPAP, and every device we own, quietly.</p>
         <a class="btn btn-primary" href="https://amzn.to/4es1JcD" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
       <article class="product">
         <span class="badge">Must-have</span>
-        <h4>Power Watchdog 50A Surge Protector</h4>
+        <h3>Power Watchdog 50A Surge Protector</h3>
         <p>Plugs in before anything else. Bad campground power can fry thousands in appliances.</p>
         <a class="btn btn-primary" href="https://amzn.to/4efcTCK" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
       <article class="product">
-        <h4>Inline RV Water Filter</h4>
+        <h3>Inline RV Water Filter</h3>
         <p>A cheap barrier between the campground spigot and your family's water.</p>
         <a class="btn btn-primary" href="https://link.amazon/B09mGKIdD" target="_blank" rel="sponsored nofollow noopener">Check price</a>
       </article>
@@ -186,7 +187,7 @@
     <p>Our dogs think every campground was built just for them. Keeping them safe and happy on the road comes down to a few basics.</p>
 
     <figure>
-      <img src="../assets/img/album/monte-sano-12-the-crew.jpg" alt="Our two small dogs inside the camper, one wearing a pink Happy Camper shirt">
+      <img src="../assets/img/album/monte-sano-12-the-crew.webp" srcset="../assets/img/album/monte-sano-12-the-crew-480.webp 480w, ../assets/img/album/monte-sano-12-the-crew-960.webp 960w, ../assets/img/album/monte-sano-12-the-crew.webp 1200w" sizes="(max-width: 780px) 92vw, 740px" width="1200" height="1600" alt="Our two small dogs inside the camper, one wearing a pink Happy Camper shirt">
       <figcaption>The trip crew, ready for duty. Yes, she has a Happy Camper shirt.</figcaption>
     </figure>
 
@@ -202,7 +203,7 @@
     </ul>
 
     <div class="info-box">
-      <h4>Fireworks and storm nights</h4>
+      <h3>Fireworks and storm nights</h3>
       <p>If your pup gets nervous, set up a quiet spot inside the camper before dark: crate, blanket, and some background noise. Ours prefers a lap, but a cozy hideout helps a lot of dogs.</p>
     </div>
 
@@ -239,6 +240,6 @@
 </main>
 
 <div id="global-footer"></div>
-<script src="/assets/js/main.js?v=update"></script>
+<script src="/assets/js/main.js?v=20261113"></script>
 </body>
 </html>

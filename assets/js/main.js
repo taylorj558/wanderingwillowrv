@@ -16,17 +16,24 @@ document.addEventListener("DOMContentLoaded", () => {
 function setupPinterestSave() {
   if (window.location.pathname.startsWith("/pins")) return; // that page has its own pin tools
   if (document.querySelector('script[src*="assets.pinterest.com/js/pinit"]')) return;
-  // Pinterest uses the alt text as the pin description; fall back to the page title.
-  document.querySelectorAll("img").forEach((img) => {
-    if (!img.getAttribute("data-pin-description") && !img.alt) img.setAttribute("data-pin-description", document.title);
-  });
-  const s = document.createElement("script");
-  s.async = true;
-  s.defer = true;
-  s.src = "https://assets.pinterest.com/js/pinit.js";
-  s.setAttribute("data-pin-hover", "true");
-  s.setAttribute("data-pin-tall", "true");
-  document.body.appendChild(s);
+  // The hover button only works with a mouse, so phones and tablets skip the script entirely.
+  if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  const inject = () => {
+    // Pinterest uses the alt text as the pin description; fall back to the page title.
+    document.querySelectorAll("img").forEach((img) => {
+      if (!img.getAttribute("data-pin-description") && !img.alt) img.setAttribute("data-pin-description", document.title);
+    });
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://assets.pinterest.com/js/pinit.js";
+    s.setAttribute("data-pin-hover", "true");
+    s.setAttribute("data-pin-tall", "true");
+    document.body.appendChild(s);
+  };
+  // Wait until the page has finished loading so Pinterest never slows down the first paint.
+  const later = () => ("requestIdleCallback" in window ? requestIdleCallback(inject, { timeout: 3000 }) : setTimeout(inject, 1500));
+  if (document.readyState === "complete") later();
+  else window.addEventListener("load", later, { once: true });
 }
 
 // Fetch a component and swap it in place of its placeholder <div>.
