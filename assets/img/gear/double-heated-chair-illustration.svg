@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Illustration of a double heated camping chair">
+  <rect width="800" height="600" fill="#f3ece0"/>
+  <circle cx="400" cy="300" r="240" fill="#e6dcc8"/>
+  <!-- ground -->
+  <rect x="90" y="500" width="620" height="16" rx="8" fill="#cbbd9f"/>
+  <ellipse cx="400" cy="498" rx="250" ry="14" fill="#000" opacity=".12"/>
+  <!-- legs (X frame) -->
+  <g stroke="#2c3330" stroke-width="12" stroke-linecap="round">
+    <line x1="190" y1="495" x2="300" y2="350"/>
+    <line x1="300" y1="495" x2="190" y2="350"/>
+    <line x1="500" y1="495" x2="610" y2="350"/>
+    <line x1="610" y1="495" x2="500" y2="350"/>
+    <line x1="350" y1="495" x2="450" y2="355"/>
+    <line x1="450" y1="495" x2="350" y2="355"/>
+  </g>
+  <!-- feet -->
+  <g fill="#1b201e">
+    <rect x="176" y="488" width="28" height="12" rx="5"/><rect x="286" y="488" width="28" height="12" rx="5"/>
+    <rect x="336" y="488" width="28" height="12" rx="5"/><rect x="436" y="488" width="28" height="12" rx="5"/>
+    <rect x="486" y="488" width="28" height="12" rx="5"/><rect x="596" y="488" width="28" height="12" rx="5"/>
+  </g>
+  <!-- seat back (loveseat) -->
+  <path d="M160 360 Q140 110 240 90 H560 Q660 110 640 360 Z" fill="#3d4642"/>
+  <path d="M182 350 Q170 130 250 112 H390 V350 Z" fill="#59635e"/>
+  <path d="M410 350 V112 H550 Q630 130 618 350 Z" fill="#59635e"/>
+  <!-- heating coils -->
+  <g fill="none" stroke="#f08a4b" stroke-width="7" stroke-linecap="round" opacity=".95" transform="translate(0,-45)">
+    <path d="M230 205 H350 Q362 205 362 217 Q362 229 350 229 H230 Q218 229 218 241 Q218 253 230 253 H350 Q362 253 362 265 Q362 277 350 277 H230 Q218 277 218 289 Q218 301 230 301 H350"/>
+    <path d="M450 205 H570 Q582 205 582 217 Q582 229 570 229 H450 Q438 229 438 241 Q438 253 450 253 H570 Q582 253 582 265 Q582 277 570 277 H450 Q438 277 438 289 Q438 301 450 301 H570"/>
+  </g>
+  <!-- seat cushion -->
+  <path d="M150 350 H650 Q668 350 664 368 L656 398 Q652 412 636 412 H164 Q148 412 144 398 L136 368 Q132 350 150 350 Z" fill="#2c3330"/>
+  <line x1="400" y1="352" x2="400" y2="410" stroke="#1b201e" stroke-width="4"/>
+  <!-- armrests + cup holders -->
+  <rect x="104" y="300" width="70" height="22" rx="11" fill="#1b201e"/>
+  <rect x="626" y="300" width="70" height="22" rx="11" fill="#1b201e"/>
+  <rect x="112" y="322" width="40" height="44" rx="8" fill="#3d4642"/>
+  <rect x="648" y="322" width="40" height="44" rx="8" fill="#3d4642"/>
+  <!-- power buttons -->
+  <circle cx="372" cy="330" r="9" fill="#f08a4b"/>
+  <circle cx="428" cy="330" r="9" fill="#f08a4b"/>
+</svg>
