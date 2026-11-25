@@ -8,7 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
   setupImageFallbacks();
   setupStoryFilters();
   setupPinterestSave();
+  setupGoatCounter();
 });
+
+// GoatCounter: free, privacy-friendly visitor counts (no cookies).
+// Dashboard: https://wanderingwillowrv.goatcounter.com  (the site code must match the URL below)
+function setupGoatCounter() {
+  if (window.location.pathname.startsWith("/pins")) return;
+  if (document.querySelector("script[data-goatcounter]")) return;
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://gc.zgo.at/count.js";
+  s.setAttribute("data-goatcounter", "https://wanderingwillowrv.goatcounter.com/count");
+  document.body.appendChild(s);
+}
 
 // Pinterest "Save" button that appears when you hover over a photo.
 // Uses Pinterest's own pinit.js; the pin links back to the page it came from.
